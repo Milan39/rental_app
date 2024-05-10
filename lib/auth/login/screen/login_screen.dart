@@ -68,19 +68,17 @@ class LoginScreen extends StatelessWidget {
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
                                 keyboardType: TextInputType.emailAddress,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge!
-                                    .copyWith(
-                                      color: Colors.white,
-                                    ),
+                                style: Theme.of(context).textTheme.bodyLarge,
                                 cursorColor: kPrimaryRed,
                                 decoration: textFieldDecoration(
-                                    hintText: 'Enter Email Address'),
-                                validator: FormBuilderValidators.compose([
-                                  // FormBuilderValidators.required(),
-                                  // FormBuilderValidators.email(),
-                                ]),
+                                  hintText: 'Enter Email Address',
+                                ),
+                                validator: FormBuilderValidators.compose(
+                                  [
+                                    // FormBuilderValidators.required(),
+                                    // FormBuilderValidators.email(),
+                                  ],
+                                ),
                               ),
                               SizedBox(height: 10.h),
                               Text(
@@ -99,27 +97,23 @@ class LoginScreen extends StatelessWidget {
                                 name: 'password',
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge!
-                                    .copyWith(
-                                      color: Colors.white,
-                                    ),
+                                style: Theme.of(context).textTheme.bodyLarge,
                                 decoration: passwordFieldDecoration(
-                                    hintText: 'Enter Password',
-                                    suffixIcon: IconButton(
-                                      icon: Icon(
-                                        state.hidePassword
-                                            ? Icons.visibility_off
-                                            : Icons.visibility,
-                                        color: Colors.grey.shade400,
-                                      ),
-                                      onPressed: () {
-                                        context
-                                            .read<LoginCubit>()
-                                            .togglePasswordVisibility();
-                                      },
-                                    )),
+                                  hintText: 'Enter Password',
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      state.hidePassword
+                                          ? Icons.visibility_off
+                                          : Icons.visibility,
+                                      color: Colors.grey.shade400,
+                                    ),
+                                    onPressed: () {
+                                      context
+                                          .read<LoginCubit>()
+                                          .togglePasswordVisibility();
+                                    },
+                                  ),
+                                ),
                                 obscureText: state.hidePassword,
                                 validator: FormBuilderValidators.compose([
                                   // FormBuilderValidators.required(),
@@ -141,22 +135,6 @@ class LoginScreen extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(height: 10.h),
-                              GestureDetector(
-                                onTap: () {},
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    "Forget Password?",
-                                    style: GoogleFonts.roboto(
-                                      fontWeight: FontWeight.w600,
-                                      letterSpacing: 0.6,
-                                      fontSize: 14.sp,
-                                      color: kPrimaryPurple,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 15.h),
                               InkWell(
                                 onTap: () {
                                   //   TODO
@@ -169,7 +147,7 @@ class LoginScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10.r),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey[200]!,
+                                        color: Colors.grey[300]!,
                                         offset: const Offset(1, 2),
                                         spreadRadius: 1,
                                         blurRadius: 1,

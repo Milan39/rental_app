@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:ghar_bhada/app_routes.dart';
+
 import 'injection_container.dart' as di;
 
 void main() async {
@@ -27,17 +26,11 @@ class MyApp extends StatelessWidget {
         return MaterialApp.router(
           routerConfig: AppRoutes.router,
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            brightness: Brightness.light,
-            appBarTheme: const AppBarTheme(backgroundColor: Colors.black54),
-            // scaffoldBackgroundColor: Colors.black54,
-          ),
-          localizationsDelegates: const [
-            FormBuilderLocalizations.delegate,
-            ...GlobalMaterialLocalizations.delegates,
-            GlobalWidgetsLocalizations.delegate,
-          ],
-          supportedLocales: FormBuilderLocalizations.supportedLocales,
+          // theme: ThemeData(
+          //   brightness: Brightness.light,
+          //   appBarTheme: const AppBarTheme(backgroundColor: Colors.black54),
+          //   // scaffoldBackgroundColor: Colors.black54,
+          // ),
         );
       },
     );

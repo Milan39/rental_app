@@ -13,6 +13,7 @@ Color kPrimaryOrange = const Color(0xFFFF7800);
 
 // Sazz
 Color kPrimaryPurple = const Color(0xFF4C4DDC);
+Color kSecondaryPurple = const Color(0xFFE2EAFD);
 
 // secondary colors
 Color kSecondaryGreen = const Color(0xFF6AD2A0);

@@ -13,13 +13,13 @@ class BottomNavBarCubit extends Cubit<BottomNavBarState> {
               NavBarItemEntity(
                   label: 'Home',
                   slug: 'home',
-                  icon: 'assets/icons/home.svg',
+                  icon: 'assets/icons/inactive_home.svg',
                   activeIcon: 'assets/icons/home.svg'),
               NavBarItemEntity(
                   label: 'profile',
                   slug: 'profile',
-                  icon: 'assets/icons/profile.svg',
-                  activeIcon: 'assets/icons/profile.svg'),
+                  icon: 'assets/icons/inactive_profile.svg',
+                  activeIcon: 'assets/icons/active_profile.svg'),
             ],
           ),
         );
