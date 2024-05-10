@@ -12,74 +12,90 @@ class HomeScreenTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      edgeOffset: 50,
-      color: kPrimaryRed,
-      triggerMode: RefreshIndicatorTriggerMode.anywhere,
-      backgroundColor: kSecondaryBlack,
-      onRefresh: () async {},
-      child: SingleChildScrollView(
-        physics: const AlwaysScrollableScrollPhysics(),
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 10.r),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 10.h),
-              Row(
-                children: [
-                  const Expanded(
-                    child: SearchBar(),
-                  ),
-                  SizedBox(width: 10.w),
-                  GestureDetector(
-                    onTap: () {
-                      // TODO
-                    },
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 10.r, horizontal: 10.r),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                        border:
-                            Border.all(color: kPrimaryPurple.withOpacity(0.2)),
-                      ),
-                      // alignment: Alignment.center,
-                      child: SvgPicture.asset(
-                        'assets/icons/filter.svg',
-                        height: 10.h,
-                      ),
+    return SingleChildScrollView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10.r),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 10.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Discover \nyour new house.",
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                Container(
+                  height: 25.h,
+                  width: 45.w,
+                  padding: EdgeInsets.symmetric(vertical: 5.r, horizontal: 5.r),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.r),
+                    border: Border.all(color: kPrimaryPurple.withOpacity(0.2)),
+                    image: const DecorationImage(
+                      image: AssetImage('assets/images/lil_saaz.png'),
+                      fit: BoxFit.cover,
                     ),
                   ),
-                ],
-              ),
-              SizedBox(height: 10.h),
-              const DetailsCard(
-                imagePath: 'assets/images/property.png',
-                location: "Lakside Pokhara",
-                mapLocation: "Alice Springs NT 0870, Nepal",
-                price: '10,000',
-              ),
-              const DetailsCard(
-                imagePath: 'assets/images/property2.png',
-                location: "Kathmandu Nepal",
-                mapLocation: "location near ktm, Nepal",
-                price: '20,000',
-              ),
-              const DetailsCard(
-                imagePath: 'assets/images/property3.png',
-                location: "Pokhara",
-                mapLocation: "Alice Springs NT 0870, Nepal",
-                price: '10,000',
-              ),
-              const DetailsCard(
-                imagePath: 'assets/images/property4.png',
-                location: "Lakside Pokhara",
-                mapLocation: "location near Rastra Bank Chowk, Nepal",
-                price: '30,000',
-              ),
-            ],
-          ),
+                )
+              ],
+            ),
+            SizedBox(height: 10.h),
+            Row(
+              children: [
+                const Expanded(
+                  child: SearchBar(),
+                ),
+                SizedBox(width: 10.w),
+                GestureDetector(
+                  onTap: () {
+                    // TODO
+                  },
+                  child: Container(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10.r, horizontal: 10.r),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      border:
+                          Border.all(color: kPrimaryPurple.withOpacity(0.2)),
+                    ),
+                    // alignment: Alignment.center,
+                    child: SvgPicture.asset(
+                      'assets/icons/filter.svg',
+                      height: 10.h,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10.h),
+            const DetailsCard(
+              imagePath: 'assets/images/property.png',
+              location: "Lakside Pokhara",
+              mapLocation: "Alice Springs NT 0870, Nepal",
+              price: '10,000',
+            ),
+            const DetailsCard(
+              imagePath: 'assets/images/property2.png',
+              location: "Kathmandu Nepal",
+              mapLocation: "location near ktm, Nepal",
+              price: '20,000',
+            ),
+            const DetailsCard(
+              imagePath: 'assets/images/property3.png',
+              location: "Pokhara",
+              mapLocation: "Alice Springs NT 0870, Nepal",
+              price: '10,000',
+            ),
+            const DetailsCard(
+              imagePath: 'assets/images/property4.png',
+              location: "Lakside Pokhara",
+              mapLocation: "location near Rastra Bank Chowk, Nepal",
+              price: '30,000',
+            ),
+          ],
         ),
       ),
     );
