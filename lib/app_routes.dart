@@ -3,6 +3,9 @@ import 'package:ghar_bhada/auth/login/screen/login_screen.dart';
 import 'package:ghar_bhada/auth/login/screen/sing_up.dart';
 import 'package:ghar_bhada/home/screen/detail_screen.dart';
 import 'package:ghar_bhada/home/screen/home_screen.dart';
+import 'package:ghar_bhada/landloard/property/screen/add_property_screen.dart';
+import 'package:ghar_bhada/landloard/property/screen/edit_profile_screen.dart';
+import 'package:ghar_bhada/landloard/property/screen/support_screen.dart';
 import 'package:ghar_bhada/splash/screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -60,11 +63,48 @@ class AppRoutes {
             child: child,
           ),
         ),
-      ),GoRoute(
+      ),
+      GoRoute(
         name: 'details',
         path: '/details',
         pageBuilder: (context, state) => CustomTransitionPage(
           child: const DetailScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              ScaleTransition(
+            scale: animation,
+            child: child,
+          ),
+        ),
+      ),
+      GoRoute(
+        name: 'add-property',
+        path: '/add-property',
+        pageBuilder: (context, state) => CustomTransitionPage(
+          child: const AddPropertyScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              ScaleTransition(
+            scale: animation,
+            child: child,
+          ),
+        ),
+      ),
+      GoRoute(
+        name: 'edit-profile',
+        path: '/edit-profile',
+        pageBuilder: (context, state) => CustomTransitionPage(
+          child: const EditProfileScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              ScaleTransition(
+            scale: animation,
+            child: child,
+          ),
+        ),
+      ),
+      GoRoute(
+        name: 'support',
+        path: '/support',
+        pageBuilder: (context, state) => CustomTransitionPage(
+          child: const SupportScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
             scale: animation,

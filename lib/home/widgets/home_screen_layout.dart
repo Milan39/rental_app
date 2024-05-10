@@ -24,8 +24,10 @@ class HomeScreenTab extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Discover \nyour new house.",
-                  style: Theme.of(context).textTheme.titleLarge,
+                  "Discover \nyour new apartment.",
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
                 ),
                 Container(
                   height: 25.h,

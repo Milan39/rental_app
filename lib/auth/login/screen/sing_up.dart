@@ -17,8 +17,7 @@ class SingUpScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 15.r, horizontal: 10.r),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               const CustomAppBar(title: 'Signup'),
               SizedBox(height: 20.h),
@@ -34,9 +33,7 @@ class SingUpScreen extends StatelessWidget {
               FormBuilderTextField(
                 name: 'name',
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: Colors.white,
-                    ),
+                style: Theme.of(context).textTheme.bodyLarge,
                 decoration: textFieldDecoration(
                   hintText: 'Input your name',
                 ),
@@ -57,9 +54,7 @@ class SingUpScreen extends StatelessWidget {
               FormBuilderTextField(
                 name: 'email',
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: Colors.white,
-                    ),
+                style: Theme.of(context).textTheme.bodyLarge,
                 decoration: textFieldDecoration(
                   hintText: 'Input email address',
                 ),
@@ -80,9 +75,7 @@ class SingUpScreen extends StatelessWidget {
               FormBuilderTextField(
                 name: 'password',
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: Colors.white,
-                    ),
+                style: Theme.of(context).textTheme.bodyLarge,
                 decoration: textFieldDecoration(
                   hintText: 'Enter Password',
                 ),
