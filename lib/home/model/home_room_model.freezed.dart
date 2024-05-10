@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'room_detail_model.dart';
+part of 'home_room_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-RoomDetailModel _$RoomDetailModelFromJson(Map<String, dynamic> json) {
-  return _RoomDetailModel.fromJson(json);
+HomeRoomModel _$HomeRoomModelFromJson(Map<String, dynamic> json) {
+  return _HomeRoomModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$RoomDetailModel {
+mixin _$HomeRoomModel {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'street_location')
   String get streetLocation => throw _privateConstructorUsedError;
@@ -30,15 +30,15 @@ mixin _$RoomDetailModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $RoomDetailModelCopyWith<RoomDetailModel> get copyWith =>
+  $HomeRoomModelCopyWith<HomeRoomModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RoomDetailModelCopyWith<$Res> {
-  factory $RoomDetailModelCopyWith(
-          RoomDetailModel value, $Res Function(RoomDetailModel) then) =
-      _$RoomDetailModelCopyWithImpl<$Res, RoomDetailModel>;
+abstract class $HomeRoomModelCopyWith<$Res> {
+  factory $HomeRoomModelCopyWith(
+          HomeRoomModel value, $Res Function(HomeRoomModel) then) =
+      _$HomeRoomModelCopyWithImpl<$Res, HomeRoomModel>;
   @useResult
   $Res call(
       {String id,
@@ -49,9 +49,9 @@ abstract class $RoomDetailModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RoomDetailModelCopyWithImpl<$Res, $Val extends RoomDetailModel>
-    implements $RoomDetailModelCopyWith<$Res> {
-  _$RoomDetailModelCopyWithImpl(this._value, this._then);
+class _$HomeRoomModelCopyWithImpl<$Res, $Val extends HomeRoomModel>
+    implements $HomeRoomModelCopyWith<$Res> {
+  _$HomeRoomModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -93,11 +93,11 @@ class _$RoomDetailModelCopyWithImpl<$Res, $Val extends RoomDetailModel>
 }
 
 /// @nodoc
-abstract class _$$RoomDetailModelImplCopyWith<$Res>
-    implements $RoomDetailModelCopyWith<$Res> {
-  factory _$$RoomDetailModelImplCopyWith(_$RoomDetailModelImpl value,
-          $Res Function(_$RoomDetailModelImpl) then) =
-      __$$RoomDetailModelImplCopyWithImpl<$Res>;
+abstract class _$$HomeRoomModelImplCopyWith<$Res>
+    implements $HomeRoomModelCopyWith<$Res> {
+  factory _$$HomeRoomModelImplCopyWith(
+          _$HomeRoomModelImpl value, $Res Function(_$HomeRoomModelImpl) then) =
+      __$$HomeRoomModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -109,11 +109,11 @@ abstract class _$$RoomDetailModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$RoomDetailModelImplCopyWithImpl<$Res>
-    extends _$RoomDetailModelCopyWithImpl<$Res, _$RoomDetailModelImpl>
-    implements _$$RoomDetailModelImplCopyWith<$Res> {
-  __$$RoomDetailModelImplCopyWithImpl(
-      _$RoomDetailModelImpl _value, $Res Function(_$RoomDetailModelImpl) _then)
+class __$$HomeRoomModelImplCopyWithImpl<$Res>
+    extends _$HomeRoomModelCopyWithImpl<$Res, _$HomeRoomModelImpl>
+    implements _$$HomeRoomModelImplCopyWith<$Res> {
+  __$$HomeRoomModelImplCopyWithImpl(
+      _$HomeRoomModelImpl _value, $Res Function(_$HomeRoomModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +125,7 @@ class __$$RoomDetailModelImplCopyWithImpl<$Res>
     Object? price = null,
     Object? displayImage = null,
   }) {
-    return _then(_$RoomDetailModelImpl(
+    return _then(_$HomeRoomModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -152,16 +152,16 @@ class __$$RoomDetailModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RoomDetailModelImpl implements _RoomDetailModel {
-  const _$RoomDetailModelImpl(
+class _$HomeRoomModelImpl implements _HomeRoomModel {
+  const _$HomeRoomModelImpl(
       {required this.id,
       @JsonKey(name: 'street_location') required this.streetLocation,
       required this.city,
       required this.price,
       @JsonKey(name: 'display_image') required this.displayImage});
 
-  factory _$RoomDetailModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RoomDetailModelImplFromJson(json);
+  factory _$HomeRoomModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$HomeRoomModelImplFromJson(json);
 
   @override
   final String id;
@@ -178,14 +178,14 @@ class _$RoomDetailModelImpl implements _RoomDetailModel {
 
   @override
   String toString() {
-    return 'RoomDetailModel(id: $id, streetLocation: $streetLocation, city: $city, price: $price, displayImage: $displayImage)';
+    return 'HomeRoomModel(id: $id, streetLocation: $streetLocation, city: $city, price: $price, displayImage: $displayImage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RoomDetailModelImpl &&
+            other is _$HomeRoomModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.streetLocation, streetLocation) ||
                 other.streetLocation == streetLocation) &&
@@ -203,29 +203,28 @@ class _$RoomDetailModelImpl implements _RoomDetailModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RoomDetailModelImplCopyWith<_$RoomDetailModelImpl> get copyWith =>
-      __$$RoomDetailModelImplCopyWithImpl<_$RoomDetailModelImpl>(
-          this, _$identity);
+  _$$HomeRoomModelImplCopyWith<_$HomeRoomModelImpl> get copyWith =>
+      __$$HomeRoomModelImplCopyWithImpl<_$HomeRoomModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$RoomDetailModelImplToJson(
+    return _$$HomeRoomModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _RoomDetailModel implements RoomDetailModel {
-  const factory _RoomDetailModel(
+abstract class _HomeRoomModel implements HomeRoomModel {
+  const factory _HomeRoomModel(
       {required final String id,
       @JsonKey(name: 'street_location') required final String streetLocation,
       required final String city,
       required final String price,
       @JsonKey(name: 'display_image')
-      required final String displayImage}) = _$RoomDetailModelImpl;
+      required final String displayImage}) = _$HomeRoomModelImpl;
 
-  factory _RoomDetailModel.fromJson(Map<String, dynamic> json) =
-      _$RoomDetailModelImpl.fromJson;
+  factory _HomeRoomModel.fromJson(Map<String, dynamic> json) =
+      _$HomeRoomModelImpl.fromJson;
 
   @override
   String get id;
@@ -241,6 +240,6 @@ abstract class _RoomDetailModel implements RoomDetailModel {
   String get displayImage;
   @override
   @JsonKey(ignore: true)
-  _$$RoomDetailModelImplCopyWith<_$RoomDetailModelImpl> get copyWith =>
+  _$$HomeRoomModelImplCopyWith<_$HomeRoomModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

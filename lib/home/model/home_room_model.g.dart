@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'room_detail_model.dart';
+part of 'home_room_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RoomDetailModelImpl _$$RoomDetailModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$RoomDetailModelImpl(
+_$HomeRoomModelImpl _$$HomeRoomModelImplFromJson(Map<String, dynamic> json) =>
+    _$HomeRoomModelImpl(
       id: json['id'] as String,
       streetLocation: json['street_location'] as String,
       city: json['city'] as String,
@@ -16,8 +15,7 @@ _$RoomDetailModelImpl _$$RoomDetailModelImplFromJson(
       displayImage: json['display_image'] as String,
     );
 
-Map<String, dynamic> _$$RoomDetailModelImplToJson(
-        _$RoomDetailModelImpl instance) =>
+Map<String, dynamic> _$$HomeRoomModelImplToJson(_$HomeRoomModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'street_location': instance.streetLocation,

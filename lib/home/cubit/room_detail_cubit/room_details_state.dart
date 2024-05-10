@@ -10,7 +10,7 @@ class RoomDetailsState extends Equatable {
 class RoomDetailLoading extends RoomDetailsState {}
 
 class RoomDetailsLoaded extends RoomDetailsState {
-  final List<RoomDetailModel> rooms;
+  final List<HomeRoomModel> rooms;
 
   const RoomDetailsLoaded({
     required this.rooms,

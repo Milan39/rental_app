@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ghar_bhada/home/model/room_detail_model.dart';
+import 'package:ghar_bhada/home/model/home_room_model.dart';
 import 'package:ghar_bhada/home/repository/home_repository.dart';
 
 part 'room_details_state.dart';

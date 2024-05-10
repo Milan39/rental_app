@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ghar_bhada/core/constant.dart';
 import 'package:ghar_bhada/home/cubit/home_cubit/home_cubit.dart';
 import 'package:ghar_bhada/home/cubit/room_detail_cubit/room_details_cubit.dart';
-import 'package:ghar_bhada/home/model/room_detail_model.dart';
+import 'package:ghar_bhada/home/model/home_room_model.dart';
 import 'package:ghar_bhada/injection_container.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';

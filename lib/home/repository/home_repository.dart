@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:ghar_bhada/core/dio/api_client.dart';
-import 'package:ghar_bhada/home/model/room_detail_model.dart';
+import 'package:ghar_bhada/home/model/home_room_model.dart';
 
 class HomeRepository {
   final ApiClient apiClient;
