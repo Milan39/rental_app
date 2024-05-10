@@ -1,10 +1,21 @@
 part of 'room_details_cubit.dart';
 
-abstract class RoomDetailsState extends Equatable {
+class RoomDetailsState extends Equatable {
   const RoomDetailsState();
+
+  @override
+  List<Object?> get props => [];
 }
 
-class RoomDetailsInitial extends RoomDetailsState {
+class RoomDetailsLoading extends RoomDetailsState {}
+
+class RoomDetailsLoaded extends RoomDetailsState {}
+
+class RoomDetailsFailure extends RoomDetailsState {
+  final String message;
+
+  const RoomDetailsFailure({required this.message});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [message];
 }

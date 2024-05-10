@@ -7,14 +7,14 @@ class HomeRepository {
 
   HomeRepository({required this.apiClient});
 
-  Future<List<RoomDetailModel>> fetchRoomDetails() async {
+  Future<List<HomeRoomModel>> fetchRoomDetails() async {
     Response response = await apiClient.dio.get(
       '/v1/room/list-room',
       queryParameters: {"pagination": false},
     );
     final List<dynamic> responseData = response.data;
-    List<RoomDetailModel> rooms =
-        responseData.map((data) => RoomDetailModel.fromJson(data)).toList();
+    List<HomeRoomModel> rooms =
+        responseData.map((data) => HomeRoomModel.fromJson(data)).toList();
     return rooms;
   }
 }
