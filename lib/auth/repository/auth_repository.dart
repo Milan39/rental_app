@@ -9,8 +9,16 @@ class AuthRepository {
   Future<LoginResponseModel> loginUser(
     LoginPayLoadModel loginPayloadModel,
   ) async {
-    final response = await apiClient.dio.post("v1/auth/normal-user-login",
-        data: loginPayloadModel.toJson());
+    final response = await apiClient.dio
+        .post("v1/auth/normal-user-login", data: loginPayloadModel.toJson());
+    return LoginResponseModel.fromJson(response.data);
+  }
+
+  Future<LoginResponseModel> loginLandLord(
+    LoginPayLoadModel loginPayloadModel,
+  ) async {
+    final response = await apiClient.dio
+        .post("v1/auth/land-lord-user/login", data: loginPayloadModel.toJson());
     return LoginResponseModel.fromJson(response.data);
   }
 }

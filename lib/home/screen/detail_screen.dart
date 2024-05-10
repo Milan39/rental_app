@@ -12,7 +12,7 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String date = GoRouterState.of(context).extra as String;
+    final String data = GoRouterState.of(context).extra as String;
     return Scaffold(
       bottomNavigationBar: InkWell(
         onTap: () {
@@ -49,7 +49,12 @@ class DetailScreen extends StatelessWidget {
               SizedBox(height: 5.h),
               Stack(
                 children: [
-                  Image.asset(date),
+                  Image.network(
+                    data,
+                    height: 130.h,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
                   Positioned(
                     top: 100.h,
                     right: 15.w,

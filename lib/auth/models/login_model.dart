@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 part 'login_model.freezed.dart';
 part 'login_model.g.dart';
 
@@ -30,7 +31,9 @@ class UserModel with _$UserModel {
   const factory UserModel({
     required String id,
     @JsonKey(name: 'fullname') required String fullName,
+    required String email,
     required String avatar,
+    @JsonKey(name: 'is_first_login') required bool isFirstLogin,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, Object?> json) =>

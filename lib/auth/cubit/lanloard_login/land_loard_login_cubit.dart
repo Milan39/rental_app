@@ -2,34 +2,35 @@ import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:ghar_bhada/auth/cubit/lanloard_login/land_loard_login_state.dart';
 import 'package:ghar_bhada/auth/entities/auth_entity.dart';
 import 'package:ghar_bhada/auth/models/login_model.dart';
 import 'package:ghar_bhada/auth/repository/auth_repository.dart';
 import 'package:ghar_bhada/core/storage/storage.dart';
+import 'package:ghar_bhada/home/repository/home_repository.dart';
 
-import 'login_state.dart';
 
-class LoginCubit extends Cubit<LoginState> {
+class LandLordLoginCubit extends Cubit<LandLordLoginState> {
   final SecureStorage secureStorage;
   final AuthRepository authRepository;
   final GlobalKey<FormBuilderState> formKey = GlobalKey<FormBuilderState>();
 
-  LoginCubit({
+  LandLordLoginCubit({
     required this.authRepository,
     required this.secureStorage,
-  }) : super(const LoginState()) {
+  }) : super(const LandLordLoginState()) {
     checkAuthenticationStatus();
   }
 
   Future<void> authenticate() async {
     if (formKey.currentState!.isValid) {
-      emit(state.copyWith(status: Status.authenticating));
+      emit(state.copyWith(status: LoginStatus.authenticating));
       final loginPayload = LoginPayLoadModel(
         username: formKey.currentState!.value['email'],
         password: formKey.currentState!.value['password'],
       );
       try {
-        final loginResponse = await authRepository.loginUser(loginPayload);
+        final loginResponse = await authRepository.loginLandLord(loginPayload);
         // Save user
         await secureStorage.writeUser(
           UserEntity(
@@ -42,11 +43,11 @@ class LoginCubit extends Cubit<LoginState> {
           ),
         );
 
-        emit(state.copyWith(status: Status.authenticated));
+        emit(state.copyWith(status: LoginStatus.authenticated));
       } on DioException catch (e) {
         formKey.currentState?.fields['password']?.invalidate(e.toString());
         emit(state.copyWith(
-          status: Status.unauthenticated,
+          status: LoginStatus.unauthenticated,
           message: e.toString(),
         ));
       }
@@ -59,7 +60,7 @@ class LoginCubit extends Cubit<LoginState> {
     final bool isAuthenticated = userEntity != null;
     emit(state.copyWith(
         status:
-            isAuthenticated ? Status.authenticated : Status.unauthenticated));
+        isAuthenticated ? LoginStatus.authenticated : LoginStatus.unauthenticated));
   }
 
   void togglePasswordVisibility() {

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ghar_bhada/core/constant.dart';
+import 'package:ghar_bhada/home/cubit/home_cubit/home_cubit.dart';
+import 'package:ghar_bhada/injection_container.dart';
 import 'package:go_router/go_router.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -10,33 +13,35 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: 128.h,
-            child: Stack(
+      body: BlocProvider(
+        create: (context) => sl<HomeCubit>(),
+        child: BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            return Column(
               children: [
-                Container(
-                  height: 100.h,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: kPrimaryPurple.withOpacity(0.1),
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(80.r),
-                      bottomLeft: Radius.circular(80.r),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: 70.h,
-                  left: 100.w,
-                  right: 100.w,
-                  child: CircleAvatar(
-                    maxRadius: 50.r,
-                    backgroundImage: const AssetImage(
-                      "assets/images/lil_saaz.png",
-                    ),
-                  ),
+                SizedBox(
+                  height: 128.h,
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: 100.h,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: kPrimaryPurple.withOpacity(0.1),
+                          borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(80.r),
+                            bottomLeft: Radius.circular(80.r),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 70.h,
+                        left: 100.w,
+                        right: 100.w,
+                        child: CircleAvatar(
+                          maxRadius: 50.r,
+                          backgroundImage: NetworkImage(state.avatar),
+                        ),
                 ),
                 Positioned(
                   top: 100.h,
@@ -52,13 +57,13 @@ class ProfileScreen extends StatelessWidget {
           ),
           SizedBox(height: 5.h),
           Text(
-            "Saaz",
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
+            state.userFullName,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
           Text(
-            "youremail@domain.com | +997 9845631014",
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
+            "${state.email} | +997 9845631014",
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
           SizedBox(height: 25.h),
           ProfileTile(
             title: "Edit Profile Information",
@@ -127,26 +132,29 @@ class ProfileScreen extends StatelessWidget {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   CustomLogOutButton(
-                                      buttonName: "Cancel",
-                                      onTap: () {
-                                        context.pop();
-                                      }),
-                                  CustomLogOutButton(
-                                    buttonName: "Logout",
-                                    onTap: () {},
-                                    isLogout: true,
-                                  ),
+                                            buttonName: "Cancel",
+                                            onTap: () {
+                                              context.pop();
+                                            }),
+                                        CustomLogOutButton(
+                                          buttonName: "Logout",
+                                          onTap: () {},
+                                          isLogout: true,
+                                        ),
+                                      ],
+                                    ),
+                                  )
                                 ],
                               ),
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  });
-            },
-          ),
-        ],
+                            ),
+                          );
+                        });
+                  },
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

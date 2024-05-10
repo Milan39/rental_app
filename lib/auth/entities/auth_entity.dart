@@ -7,6 +7,7 @@ class UserEntity with _$UserEntity {
   const factory UserEntity({
     required String id,
     required String fullName,
+    required String email,
     required String accessToken,
     required String? refreshToken,
     required String avatar,
@@ -16,14 +17,4 @@ class UserEntity with _$UserEntity {
   => _$UserEntityFromJson(json);
 }
 
-@freezed
-class OrganizerEntity with _$OrganizerEntity {
-  const factory OrganizerEntity({
-    required String id,
-    required String name
-  }) = _OrganizerEntity;
-
-  factory OrganizerEntity.fromJson(Map<String, Object?> json)
-  => _$OrganizerEntityFromJson(json);
-}
 

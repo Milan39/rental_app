@@ -10,14 +10,14 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit({required this.secureStorage})
       : super(
           const HomeInitialState(
-            userFullName: 'Revel User',
+            userFullName: 'GharBhada User',
             avatar:
-                "https://revel-dev.s3.amazonaws.com/media/avatar/default_avatar.png",
+                "https://revel-dev.s3.amazonaws.com/media/avatar/default_avatar.png", email: 'gharbhada@gmail.com',
           ),
         );
 
   Future<void> fetchUserInfo() async {
     UserEntity? user = await secureStorage.readUser();
-    emit(HomeState(userFullName: user!.fullName, avatar: user.avatar));
+    emit(HomeState(userFullName: user!.fullName, avatar: user.avatar, email: user.email));
   }
 }

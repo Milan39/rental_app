@@ -367,7 +367,10 @@ mixin _$UserModel {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'fullname')
   String get fullName => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   String get avatar => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_first_login')
+  bool get isFirstLogin => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -381,7 +384,11 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {String id, @JsonKey(name: 'fullname') String fullName, String avatar});
+      {String id,
+      @JsonKey(name: 'fullname') String fullName,
+      String email,
+      String avatar,
+      @JsonKey(name: 'is_first_login') bool isFirstLogin});
 }
 
 /// @nodoc
@@ -399,7 +406,9 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   $Res call({
     Object? id = null,
     Object? fullName = null,
+    Object? email = null,
     Object? avatar = null,
+    Object? isFirstLogin = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -410,10 +419,18 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
       avatar: null == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String,
+      isFirstLogin: null == isFirstLogin
+          ? _value.isFirstLogin
+          : isFirstLogin // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -427,7 +444,11 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id, @JsonKey(name: 'fullname') String fullName, String avatar});
+      {String id,
+      @JsonKey(name: 'fullname') String fullName,
+      String email,
+      String avatar,
+      @JsonKey(name: 'is_first_login') bool isFirstLogin});
 }
 
 /// @nodoc
@@ -443,7 +464,9 @@ class __$$UserModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? fullName = null,
+    Object? email = null,
     Object? avatar = null,
+    Object? isFirstLogin = null,
   }) {
     return _then(_$UserModelImpl(
       id: null == id
@@ -454,10 +477,18 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
       avatar: null == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String,
+      isFirstLogin: null == isFirstLogin
+          ? _value.isFirstLogin
+          : isFirstLogin // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -468,7 +499,9 @@ class _$UserModelImpl implements _UserModel {
   const _$UserModelImpl(
       {required this.id,
       @JsonKey(name: 'fullname') required this.fullName,
-      required this.avatar});
+      required this.email,
+      required this.avatar,
+      @JsonKey(name: 'is_first_login') required this.isFirstLogin});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -479,11 +512,16 @@ class _$UserModelImpl implements _UserModel {
   @JsonKey(name: 'fullname')
   final String fullName;
   @override
+  final String email;
+  @override
   final String avatar;
+  @override
+  @JsonKey(name: 'is_first_login')
+  final bool isFirstLogin;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, fullName: $fullName, avatar: $avatar)';
+    return 'UserModel(id: $id, fullName: $fullName, email: $email, avatar: $avatar, isFirstLogin: $isFirstLogin)';
   }
 
   @override
@@ -494,12 +532,16 @@ class _$UserModelImpl implements _UserModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
-            (identical(other.avatar, avatar) || other.avatar == avatar));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar) &&
+            (identical(other.isFirstLogin, isFirstLogin) ||
+                other.isFirstLogin == isFirstLogin));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, fullName, avatar);
+  int get hashCode =>
+      Object.hash(runtimeType, id, fullName, email, avatar, isFirstLogin);
 
   @JsonKey(ignore: true)
   @override
@@ -517,9 +559,12 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
-      {required final String id,
-      @JsonKey(name: 'fullname') required final String fullName,
-      required final String avatar}) = _$UserModelImpl;
+          {required final String id,
+          @JsonKey(name: 'fullname') required final String fullName,
+          required final String email,
+          required final String avatar,
+          @JsonKey(name: 'is_first_login') required final bool isFirstLogin}) =
+      _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -530,7 +575,12 @@ abstract class _UserModel implements UserModel {
   @JsonKey(name: 'fullname')
   String get fullName;
   @override
+  String get email;
+  @override
   String get avatar;
+  @override
+  @JsonKey(name: 'is_first_login')
+  bool get isFirstLogin;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>

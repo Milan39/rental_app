@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ghar_bhada/core/constant.dart';
 import 'package:ghar_bhada/home/cubit/home_cubit/home_cubit.dart';
+import 'package:ghar_bhada/home/cubit/room_detail_cubit/room_details_cubit.dart';
+import 'package:ghar_bhada/home/model/room_detail_model.dart';
 import 'package:ghar_bhada/injection_container.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,8 +16,15 @@ class HomeScreenTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<HomeCubit>()..fetchUserInfo(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => sl<HomeCubit>()..fetchUserInfo(),
+        ),
+        BlocProvider(
+          create: (context) => sl<RoomDetailsCubit>()..fetchRoomDetails(),
+        ),
+      ],
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           return SingleChildScrollView(
@@ -80,30 +89,46 @@ class HomeScreenTab extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 10.h),
-                  const DetailsCard(
-                    imagePath: 'assets/images/property.png',
-                    location: "Lakside Pokhara",
-                    mapLocation: "Alice Springs NT 0870, Nepal",
-                    price: '10,000',
+                  BlocBuilder<RoomDetailsCubit, RoomDetailsState>(
+                    builder: (context, state) {
+                      return state is RoomDetailsLoaded
+                          ? Column(
+                              children: List.generate(
+                                state.rooms.length,
+                                (index) {
+                                  return DetailsCard(
+                                    rooms: state.rooms[index],
+                                  );
+                                },
+                              ),
+                            )
+                          : const Center(child: const CircularProgressIndicator());
+                    },
                   ),
-                  const DetailsCard(
-                    imagePath: 'assets/images/property2.png',
-                    location: "Kathmandu Nepal",
-                    mapLocation: "location near ktm, Nepal",
-                    price: '20,000',
-                  ),
-                  const DetailsCard(
-                    imagePath: 'assets/images/property3.png',
-                    location: "Pokhara",
-                    mapLocation: "Alice Springs NT 0870, Nepal",
-                    price: '10,000',
-                  ),
-                  const DetailsCard(
-                    imagePath: 'assets/images/property4.png',
-                    location: "Lakside Pokhara",
-                    mapLocation: "location near Rastra Bank Chowk, Nepal",
-                    price: '30,000',
-                  ),
+                  // const DetailsCard(
+                  //   imagePath: 'assets/images/property.png',
+                  //   location: "Lakside Pokhara",
+                  //   mapLocation: "Alice Springs NT 0870, Nepal",
+                  //   price: '10,000',
+                  // ),
+                  // const DetailsCard(
+                  //   imagePath: 'assets/images/property2.png',
+                  //   location: "Kathmandu Nepal",
+                  //   mapLocation: "location near ktm, Nepal",
+                  //   price: '20,000',
+                  // ),
+                  // const DetailsCard(
+                  //   imagePath: 'assets/images/property3.png',
+                  //   location: "Pokhara",
+                  //   mapLocation: "Alice Springs NT 0870, Nepal",
+                  //   price: '10,000',
+                  // ),
+                  // const DetailsCard(
+                  //   imagePath: 'assets/images/property4.png',
+                  //   location: "Lakside Pokhara",
+                  //   mapLocation: "location near Rastra Bank Chowk, Nepal",
+                  //   price: '30,000',
+                  // ),
                 ],
               ),
             ),
@@ -115,17 +140,11 @@ class HomeScreenTab extends StatelessWidget {
 }
 
 class DetailsCard extends StatelessWidget {
-  final String imagePath;
-  final String location;
-  final String mapLocation;
-  final String price;
+  final RoomDetailModel rooms;
 
   const DetailsCard({
     super.key,
-    required this.imagePath,
-    required this.location,
-    required this.mapLocation,
-    required this.price,
+    required this.rooms,
   });
 
   @override
@@ -134,7 +153,7 @@ class DetailsCard extends StatelessWidget {
       onTap: () {
         context.pushNamed(
           "details",
-           extra: imagePath,
+          extra: rooms.displayImage,
         );
       },
       child: Container(
@@ -164,8 +183,8 @@ class DetailsCard extends StatelessWidget {
                   topLeft: Radius.circular(10.r),
                 ),
                 image: DecorationImage(
-                  image: AssetImage(
-                    imagePath,
+                  image: NetworkImage(
+                    rooms.displayImage,
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -175,7 +194,7 @@ class DetailsCard extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(left: 15.r),
               child: Text(
-                location,
+                rooms.streetLocation,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
@@ -186,8 +205,11 @@ class DetailsCard extends StatelessWidget {
               minLeadingWidth: 20.w,
               contentPadding: EdgeInsets.only(right: 0.r, left: 10.r),
               title: Text(
-                mapLocation,
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.grey),
+                rooms.city,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(color: Colors.grey),
               ),
               leading: SvgPicture.asset(
                 'assets/icons/location.svg',
@@ -198,7 +220,7 @@ class DetailsCard extends StatelessWidget {
               padding: EdgeInsets.only(left: 15.r),
               child: RichText(
                 text: TextSpan(
-                  text: "Rs. $price",
+                  text: "Rs. ${rooms.price}",
                   style: GoogleFonts.roboto(
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.6,
