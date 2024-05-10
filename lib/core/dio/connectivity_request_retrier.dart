@@ -13,7 +13,7 @@ class DioConnectivityRequestRetrier {
 
   scheduleRequestRetry(DioException error, ErrorInterceptorHandler handler) {
     streamSubscription = connectivity.onConnectivityChanged.listen(
-          (connectivityResult) async {
+      (connectivityResult) async {
         if (connectivityResult != ConnectivityResult.none) {
           streamSubscription.cancel();
           try {

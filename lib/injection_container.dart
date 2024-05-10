@@ -9,16 +9,16 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   // Cubit
-  sl.registerFactory(
-          () => LoginCubit(authRepository: sl(), secureStorage: sl()));
+  // sl.registerFactory(
+  //         () => LoginCubit(authRepository: sl(), secureStorage: sl()));
   sl.registerFactory(() => BottomNavBarCubit());
 
 
   // Repository
-  sl.registerLazySingleton(() => AuthRepository(apiClient: sl()));
+  // sl.registerLazySingleton(() => AuthRepository(apiClient: sl()));
 
 
   //! External
-  sl.registerLazySingleton(() => ApiClient());
+  // sl.registerLazySingleton(() => ApiClient());
   sl.registerLazySingleton(() => SecureStorage());
 }

@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 
 import 'app_interceptor.dart';
 import 'connectivity_request_retrier.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ApiClient {
   final dio = createDio();
@@ -17,8 +18,7 @@ class ApiClient {
 
   static Dio createDio() {
     var dio = Dio(BaseOptions(
-        // TODO
-        baseUrl: "https://api-dev.revelarena.com",
+        baseUrl: dotenv.get('API_BASE_URL'),
         contentType: "application/json",
         connectTimeout: const Duration(seconds: 15000),
         receiveTimeout: const Duration(seconds: 15000),
@@ -26,11 +26,12 @@ class ApiClient {
 
     dio.interceptors.addAll({
       AppInterceptor(
-        dio: dio,
-        dioConnectivityRequestRetrier: DioConnectivityRequestRetrier(
           dio: dio,
-          connectivity: Connectivity(),
-        ),
+          dioConnectivityRequestRetrier: DioConnectivityRequestRetrier(
+            dio: dio,
+            connectivity: Connectivity(),
+
+          ),
       )
     });
 

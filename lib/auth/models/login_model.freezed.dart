@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'auth_model.dart';
+part of 'login_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,34 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-LoginPayloadModel _$LoginPayloadModelFromJson(Map<String, dynamic> json) {
-  return _LoginPayloadModel.fromJson(json);
+LoginPayLoadModel _$LoginPayLoadModelFromJson(Map<String, dynamic> json) {
+  return _LoginPayLoadModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$LoginPayloadModel {
+mixin _$LoginPayLoadModel {
   String get username => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LoginPayloadModelCopyWith<LoginPayloadModel> get copyWith =>
+  $LoginPayLoadModelCopyWith<LoginPayLoadModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginPayloadModelCopyWith<$Res> {
-  factory $LoginPayloadModelCopyWith(
-          LoginPayloadModel value, $Res Function(LoginPayloadModel) then) =
-      _$LoginPayloadModelCopyWithImpl<$Res, LoginPayloadModel>;
+abstract class $LoginPayLoadModelCopyWith<$Res> {
+  factory $LoginPayLoadModelCopyWith(
+          LoginPayLoadModel value, $Res Function(LoginPayLoadModel) then) =
+      _$LoginPayLoadModelCopyWithImpl<$Res, LoginPayLoadModel>;
   @useResult
   $Res call({String username, String password});
 }
 
 /// @nodoc
-class _$LoginPayloadModelCopyWithImpl<$Res, $Val extends LoginPayloadModel>
-    implements $LoginPayloadModelCopyWith<$Res> {
-  _$LoginPayloadModelCopyWithImpl(this._value, this._then);
+class _$LoginPayLoadModelCopyWithImpl<$Res, $Val extends LoginPayLoadModel>
+    implements $LoginPayLoadModelCopyWith<$Res> {
+  _$LoginPayLoadModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -68,22 +68,22 @@ class _$LoginPayloadModelCopyWithImpl<$Res, $Val extends LoginPayloadModel>
 }
 
 /// @nodoc
-abstract class _$$LoginPayloadModelImplCopyWith<$Res>
-    implements $LoginPayloadModelCopyWith<$Res> {
-  factory _$$LoginPayloadModelImplCopyWith(_$LoginPayloadModelImpl value,
-          $Res Function(_$LoginPayloadModelImpl) then) =
-      __$$LoginPayloadModelImplCopyWithImpl<$Res>;
+abstract class _$$LoginPayLoadModelImplCopyWith<$Res>
+    implements $LoginPayLoadModelCopyWith<$Res> {
+  factory _$$LoginPayLoadModelImplCopyWith(_$LoginPayLoadModelImpl value,
+          $Res Function(_$LoginPayLoadModelImpl) then) =
+      __$$LoginPayLoadModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String username, String password});
 }
 
 /// @nodoc
-class __$$LoginPayloadModelImplCopyWithImpl<$Res>
-    extends _$LoginPayloadModelCopyWithImpl<$Res, _$LoginPayloadModelImpl>
-    implements _$$LoginPayloadModelImplCopyWith<$Res> {
-  __$$LoginPayloadModelImplCopyWithImpl(_$LoginPayloadModelImpl _value,
-      $Res Function(_$LoginPayloadModelImpl) _then)
+class __$$LoginPayLoadModelImplCopyWithImpl<$Res>
+    extends _$LoginPayLoadModelCopyWithImpl<$Res, _$LoginPayLoadModelImpl>
+    implements _$$LoginPayLoadModelImplCopyWith<$Res> {
+  __$$LoginPayLoadModelImplCopyWithImpl(_$LoginPayLoadModelImpl _value,
+      $Res Function(_$LoginPayLoadModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$LoginPayloadModelImplCopyWithImpl<$Res>
     Object? username = null,
     Object? password = null,
   }) {
-    return _then(_$LoginPayloadModelImpl(
+    return _then(_$LoginPayLoadModelImpl(
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -107,12 +107,12 @@ class __$$LoginPayloadModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$LoginPayloadModelImpl implements _LoginPayloadModel {
-  const _$LoginPayloadModelImpl(
+class _$LoginPayLoadModelImpl implements _LoginPayLoadModel {
+  const _$LoginPayLoadModelImpl(
       {required this.username, required this.password});
 
-  factory _$LoginPayloadModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LoginPayloadModelImplFromJson(json);
+  factory _$LoginPayLoadModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LoginPayLoadModelImplFromJson(json);
 
   @override
   final String username;
@@ -121,14 +121,14 @@ class _$LoginPayloadModelImpl implements _LoginPayloadModel {
 
   @override
   String toString() {
-    return 'LoginPayloadModel(username: $username, password: $password)';
+    return 'LoginPayLoadModel(username: $username, password: $password)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoginPayloadModelImpl &&
+            other is _$LoginPayLoadModelImpl &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.password, password) ||
@@ -142,25 +142,25 @@ class _$LoginPayloadModelImpl implements _LoginPayloadModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoginPayloadModelImplCopyWith<_$LoginPayloadModelImpl> get copyWith =>
-      __$$LoginPayloadModelImplCopyWithImpl<_$LoginPayloadModelImpl>(
+  _$$LoginPayLoadModelImplCopyWith<_$LoginPayLoadModelImpl> get copyWith =>
+      __$$LoginPayLoadModelImplCopyWithImpl<_$LoginPayLoadModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LoginPayloadModelImplToJson(
+    return _$$LoginPayLoadModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _LoginPayloadModel implements LoginPayloadModel {
-  const factory _LoginPayloadModel(
+abstract class _LoginPayLoadModel implements LoginPayLoadModel {
+  const factory _LoginPayLoadModel(
       {required final String username,
-      required final String password}) = _$LoginPayloadModelImpl;
+      required final String password}) = _$LoginPayLoadModelImpl;
 
-  factory _LoginPayloadModel.fromJson(Map<String, dynamic> json) =
-      _$LoginPayloadModelImpl.fromJson;
+  factory _LoginPayLoadModel.fromJson(Map<String, dynamic> json) =
+      _$LoginPayLoadModelImpl.fromJson;
 
   @override
   String get username;
@@ -168,7 +168,7 @@ abstract class _LoginPayloadModel implements LoginPayloadModel {
   String get password;
   @override
   @JsonKey(ignore: true)
-  _$$LoginPayloadModelImplCopyWith<_$LoginPayloadModelImpl> get copyWith =>
+  _$$LoginPayLoadModelImplCopyWith<_$LoginPayLoadModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -181,7 +181,6 @@ mixin _$LoginResponseModel {
   String get access => throw _privateConstructorUsedError;
   String get refresh => throw _privateConstructorUsedError;
   UserModel get user => throw _privateConstructorUsedError;
-  List<OrganizerModel> get organizers => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -195,11 +194,7 @@ abstract class $LoginResponseModelCopyWith<$Res> {
           LoginResponseModel value, $Res Function(LoginResponseModel) then) =
       _$LoginResponseModelCopyWithImpl<$Res, LoginResponseModel>;
   @useResult
-  $Res call(
-      {String access,
-      String refresh,
-      UserModel user,
-      List<OrganizerModel> organizers});
+  $Res call({String access, String refresh, UserModel user});
 
   $UserModelCopyWith<$Res> get user;
 }
@@ -220,7 +215,6 @@ class _$LoginResponseModelCopyWithImpl<$Res, $Val extends LoginResponseModel>
     Object? access = null,
     Object? refresh = null,
     Object? user = null,
-    Object? organizers = null,
   }) {
     return _then(_value.copyWith(
       access: null == access
@@ -235,10 +229,6 @@ class _$LoginResponseModelCopyWithImpl<$Res, $Val extends LoginResponseModel>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserModel,
-      organizers: null == organizers
-          ? _value.organizers
-          : organizers // ignore: cast_nullable_to_non_nullable
-              as List<OrganizerModel>,
     ) as $Val);
   }
 
@@ -259,11 +249,7 @@ abstract class _$$LoginResponseModelImplCopyWith<$Res>
       __$$LoginResponseModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String access,
-      String refresh,
-      UserModel user,
-      List<OrganizerModel> organizers});
+  $Res call({String access, String refresh, UserModel user});
 
   @override
   $UserModelCopyWith<$Res> get user;
@@ -283,7 +269,6 @@ class __$$LoginResponseModelImplCopyWithImpl<$Res>
     Object? access = null,
     Object? refresh = null,
     Object? user = null,
-    Object? organizers = null,
   }) {
     return _then(_$LoginResponseModelImpl(
       access: null == access
@@ -298,10 +283,6 @@ class __$$LoginResponseModelImplCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserModel,
-      organizers: null == organizers
-          ? _value._organizers
-          : organizers // ignore: cast_nullable_to_non_nullable
-              as List<OrganizerModel>,
     ));
   }
 }
@@ -310,11 +291,7 @@ class __$$LoginResponseModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$LoginResponseModelImpl implements _LoginResponseModel {
   const _$LoginResponseModelImpl(
-      {required this.access,
-      required this.refresh,
-      required this.user,
-      required final List<OrganizerModel> organizers})
-      : _organizers = organizers;
+      {required this.access, required this.refresh, required this.user});
 
   factory _$LoginResponseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$LoginResponseModelImplFromJson(json);
@@ -325,17 +302,10 @@ class _$LoginResponseModelImpl implements _LoginResponseModel {
   final String refresh;
   @override
   final UserModel user;
-  final List<OrganizerModel> _organizers;
-  @override
-  List<OrganizerModel> get organizers {
-    if (_organizers is EqualUnmodifiableListView) return _organizers;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_organizers);
-  }
 
   @override
   String toString() {
-    return 'LoginResponseModel(access: $access, refresh: $refresh, user: $user, organizers: $organizers)';
+    return 'LoginResponseModel(access: $access, refresh: $refresh, user: $user)';
   }
 
   @override
@@ -345,15 +315,12 @@ class _$LoginResponseModelImpl implements _LoginResponseModel {
             other is _$LoginResponseModelImpl &&
             (identical(other.access, access) || other.access == access) &&
             (identical(other.refresh, refresh) || other.refresh == refresh) &&
-            (identical(other.user, user) || other.user == user) &&
-            const DeepCollectionEquality()
-                .equals(other._organizers, _organizers));
+            (identical(other.user, user) || other.user == user));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, access, refresh, user,
-      const DeepCollectionEquality().hash(_organizers));
+  int get hashCode => Object.hash(runtimeType, access, refresh, user);
 
   @JsonKey(ignore: true)
   @override
@@ -372,11 +339,9 @@ class _$LoginResponseModelImpl implements _LoginResponseModel {
 
 abstract class _LoginResponseModel implements LoginResponseModel {
   const factory _LoginResponseModel(
-          {required final String access,
-          required final String refresh,
-          required final UserModel user,
-          required final List<OrganizerModel> organizers}) =
-      _$LoginResponseModelImpl;
+      {required final String access,
+      required final String refresh,
+      required final UserModel user}) = _$LoginResponseModelImpl;
 
   factory _LoginResponseModel.fromJson(Map<String, dynamic> json) =
       _$LoginResponseModelImpl.fromJson;
@@ -387,8 +352,6 @@ abstract class _LoginResponseModel implements LoginResponseModel {
   String get refresh;
   @override
   UserModel get user;
-  @override
-  List<OrganizerModel> get organizers;
   @override
   @JsonKey(ignore: true)
   _$$LoginResponseModelImplCopyWith<_$LoginResponseModelImpl> get copyWith =>
@@ -571,199 +534,5 @@ abstract class _UserModel implements UserModel {
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-OrganizerModel _$OrganizerModelFromJson(Map<String, dynamic> json) {
-  return _OrganizerModel.fromJson(json);
-}
-
-/// @nodoc
-mixin _$OrganizerModel {
-  String get id => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get position => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $OrganizerModelCopyWith<OrganizerModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OrganizerModelCopyWith<$Res> {
-  factory $OrganizerModelCopyWith(
-          OrganizerModel value, $Res Function(OrganizerModel) then) =
-      _$OrganizerModelCopyWithImpl<$Res, OrganizerModel>;
-  @useResult
-  $Res call({String id, String image, String name, String position});
-}
-
-/// @nodoc
-class _$OrganizerModelCopyWithImpl<$Res, $Val extends OrganizerModel>
-    implements $OrganizerModelCopyWith<$Res> {
-  _$OrganizerModelCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? image = null,
-    Object? name = null,
-    Object? position = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      position: null == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$OrganizerModelImplCopyWith<$Res>
-    implements $OrganizerModelCopyWith<$Res> {
-  factory _$$OrganizerModelImplCopyWith(_$OrganizerModelImpl value,
-          $Res Function(_$OrganizerModelImpl) then) =
-      __$$OrganizerModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String id, String image, String name, String position});
-}
-
-/// @nodoc
-class __$$OrganizerModelImplCopyWithImpl<$Res>
-    extends _$OrganizerModelCopyWithImpl<$Res, _$OrganizerModelImpl>
-    implements _$$OrganizerModelImplCopyWith<$Res> {
-  __$$OrganizerModelImplCopyWithImpl(
-      _$OrganizerModelImpl _value, $Res Function(_$OrganizerModelImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? image = null,
-    Object? name = null,
-    Object? position = null,
-  }) {
-    return _then(_$OrganizerModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      position: null == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$OrganizerModelImpl implements _OrganizerModel {
-  _$OrganizerModelImpl(
-      {required this.id,
-      required this.image,
-      required this.name,
-      required this.position});
-
-  factory _$OrganizerModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrganizerModelImplFromJson(json);
-
-  @override
-  final String id;
-  @override
-  final String image;
-  @override
-  final String name;
-  @override
-  final String position;
-
-  @override
-  String toString() {
-    return 'OrganizerModel(id: $id, image: $image, name: $name, position: $position)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OrganizerModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.position, position) ||
-                other.position == position));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, image, name, position);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OrganizerModelImplCopyWith<_$OrganizerModelImpl> get copyWith =>
-      __$$OrganizerModelImplCopyWithImpl<_$OrganizerModelImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$OrganizerModelImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _OrganizerModel implements OrganizerModel {
-  factory _OrganizerModel(
-      {required final String id,
-      required final String image,
-      required final String name,
-      required final String position}) = _$OrganizerModelImpl;
-
-  factory _OrganizerModel.fromJson(Map<String, dynamic> json) =
-      _$OrganizerModelImpl.fromJson;
-
-  @override
-  String get id;
-  @override
-  String get image;
-  @override
-  String get name;
-  @override
-  String get position;
-  @override
-  @JsonKey(ignore: true)
-  _$$OrganizerModelImplCopyWith<_$OrganizerModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
