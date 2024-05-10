@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:ghar_bhada/auth/login/screen/login_screen.dart';
-import 'package:ghar_bhada/auth/login/screen/sing_up.dart';
+import 'package:ghar_bhada/auth/screen/login_screen.dart';
+import 'package:ghar_bhada/auth/screen/sing_up.dart';
 import 'package:ghar_bhada/home/screen/detail_screen.dart';
 import 'package:ghar_bhada/home/screen/home_screen.dart';
 import 'package:ghar_bhada/landloard/property/screen/add_property_screen.dart';

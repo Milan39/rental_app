@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                     color: kSecondaryPurple,
-                    offset: Offset(4, 4),
+                    offset: const Offset(4, 4),
                     blurRadius: 10,
                     spreadRadius: 10,
                   )

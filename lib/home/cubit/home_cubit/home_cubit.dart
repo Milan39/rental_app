@@ -18,7 +18,6 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> fetchUserInfo() async {
     UserEntity? user = await secureStorage.readUser();
-
     emit(HomeState(userFullName: user!.fullName, avatar: user.avatar));
   }
 }

@@ -1,104 +1,114 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ghar_bhada/core/constant.dart';
+import 'package:ghar_bhada/home/cubit/home_cubit/home_cubit.dart';
+import 'package:ghar_bhada/injection_container.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreenTab extends StatelessWidget {
   const HomeScreenTab({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: const AlwaysScrollableScrollPhysics(),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10.r),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 10.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Discover \nyour new apartment.",
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w500,
+    return BlocProvider(
+      create: (context) => sl<HomeCubit>()..fetchUserInfo(),
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          return SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 10.r),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 10.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Discover \nyour new apartment.",
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                ),
-                Container(
-                  height: 25.h,
-                  width: 45.w,
-                  padding: EdgeInsets.symmetric(vertical: 5.r, horizontal: 5.r),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.r),
-                    border: Border.all(color: kPrimaryPurple.withOpacity(0.2)),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/lil_saaz.png'),
-                      fit: BoxFit.cover,
-                    ),
+                      Container(
+                        height: 25.h,
+                        width: 45.w,
+                        padding: EdgeInsets.symmetric(vertical: 5.r, horizontal: 5.r),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.r),
+                          border: Border.all(
+                              color: kPrimaryPurple.withOpacity(0.2)),
+                          image: DecorationImage(
+                            image: NetworkImage(state.avatar),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      )
+                    ],
                   ),
-                )
-              ],
-            ),
-            SizedBox(height: 10.h),
-            Row(
-              children: [
-                const Expanded(
-                  child: SearchBar(),
-                ),
-                SizedBox(width: 10.w),
-                GestureDetector(
-                  onTap: () {
-                    // TODO
-                  },
-                  child: Container(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 10.r, horizontal: 10.r),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.r),
-                      border:
-                          Border.all(color: kPrimaryPurple.withOpacity(0.2)),
-                    ),
-                    // alignment: Alignment.center,
-                    child: SvgPicture.asset(
-                      'assets/icons/filter.svg',
-                      height: 10.h,
-                    ),
+                  SizedBox(height: 10.h),
+                  Row(
+                    children: [
+                      const Expanded(
+                        child: SearchBar(),
+                      ),
+                      SizedBox(width: 10.w),
+                      GestureDetector(
+                        onTap: () {
+                          // TODO
+                        },
+                        child: Container(
+                          padding:
+                          EdgeInsets.symmetric(vertical: 10.r, horizontal: 10.r),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.r),
+                            border:
+                            Border.all(color: kPrimaryPurple.withOpacity(0.2)),
+                          ),
+                          // alignment: Alignment.center,
+                          child: SvgPicture.asset(
+                            'assets/icons/filter.svg',
+                            height: 10.h,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                  SizedBox(height: 10.h),
+                  const DetailsCard(
+                    imagePath: 'assets/images/property.png',
+                    location: "Lakside Pokhara",
+                    mapLocation: "Alice Springs NT 0870, Nepal",
+                    price: '10,000',
+                  ),
+                  const DetailsCard(
+                    imagePath: 'assets/images/property2.png',
+                    location: "Kathmandu Nepal",
+                    mapLocation: "location near ktm, Nepal",
+                    price: '20,000',
+                  ),
+                  const DetailsCard(
+                    imagePath: 'assets/images/property3.png',
+                    location: "Pokhara",
+                    mapLocation: "Alice Springs NT 0870, Nepal",
+                    price: '10,000',
+                  ),
+                  const DetailsCard(
+                    imagePath: 'assets/images/property4.png',
+                    location: "Lakside Pokhara",
+                    mapLocation: "location near Rastra Bank Chowk, Nepal",
+                    price: '30,000',
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 10.h),
-            const DetailsCard(
-              imagePath: 'assets/images/property.png',
-              location: "Lakside Pokhara",
-              mapLocation: "Alice Springs NT 0870, Nepal",
-              price: '10,000',
-            ),
-            const DetailsCard(
-              imagePath: 'assets/images/property2.png',
-              location: "Kathmandu Nepal",
-              mapLocation: "location near ktm, Nepal",
-              price: '20,000',
-            ),
-            const DetailsCard(
-              imagePath: 'assets/images/property3.png',
-              location: "Pokhara",
-              mapLocation: "Alice Springs NT 0870, Nepal",
-              price: '10,000',
-            ),
-            const DetailsCard(
-              imagePath: 'assets/images/property4.png',
-              location: "Lakside Pokhara",
-              mapLocation: "location near Rastra Bank Chowk, Nepal",
-              price: '30,000',
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
