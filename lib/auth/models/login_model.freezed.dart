@@ -610,3 +610,214 @@ abstract class _UserModel implements UserModel {
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+RegisterPayload _$RegisterPayloadFromJson(Map<String, dynamic> json) {
+  return _RegisterPayload.fromJson(json);
+}
+
+/// @nodoc
+mixin _$RegisterPayload {
+  @JsonKey(name: "phone_number")
+  String get phoneNumber => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  @JsonKey(name: "fullname")
+  String get fullName => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $RegisterPayloadCopyWith<RegisterPayload> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RegisterPayloadCopyWith<$Res> {
+  factory $RegisterPayloadCopyWith(
+          RegisterPayload value, $Res Function(RegisterPayload) then) =
+      _$RegisterPayloadCopyWithImpl<$Res, RegisterPayload>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "phone_number") String phoneNumber,
+      String email,
+      @JsonKey(name: "fullname") String fullName,
+      String password});
+}
+
+/// @nodoc
+class _$RegisterPayloadCopyWithImpl<$Res, $Val extends RegisterPayload>
+    implements $RegisterPayloadCopyWith<$Res> {
+  _$RegisterPayloadCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phoneNumber = null,
+    Object? email = null,
+    Object? fullName = null,
+    Object? password = null,
+  }) {
+    return _then(_value.copyWith(
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$RegisterPayloadImplCopyWith<$Res>
+    implements $RegisterPayloadCopyWith<$Res> {
+  factory _$$RegisterPayloadImplCopyWith(_$RegisterPayloadImpl value,
+          $Res Function(_$RegisterPayloadImpl) then) =
+      __$$RegisterPayloadImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "phone_number") String phoneNumber,
+      String email,
+      @JsonKey(name: "fullname") String fullName,
+      String password});
+}
+
+/// @nodoc
+class __$$RegisterPayloadImplCopyWithImpl<$Res>
+    extends _$RegisterPayloadCopyWithImpl<$Res, _$RegisterPayloadImpl>
+    implements _$$RegisterPayloadImplCopyWith<$Res> {
+  __$$RegisterPayloadImplCopyWithImpl(
+      _$RegisterPayloadImpl _value, $Res Function(_$RegisterPayloadImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phoneNumber = null,
+    Object? email = null,
+    Object? fullName = null,
+    Object? password = null,
+  }) {
+    return _then(_$RegisterPayloadImpl(
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$RegisterPayloadImpl implements _RegisterPayload {
+  const _$RegisterPayloadImpl(
+      {@JsonKey(name: "phone_number") required this.phoneNumber,
+      required this.email,
+      @JsonKey(name: "fullname") required this.fullName,
+      required this.password});
+
+  factory _$RegisterPayloadImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RegisterPayloadImplFromJson(json);
+
+  @override
+  @JsonKey(name: "phone_number")
+  final String phoneNumber;
+  @override
+  final String email;
+  @override
+  @JsonKey(name: "fullname")
+  final String fullName;
+  @override
+  final String password;
+
+  @override
+  String toString() {
+    return 'RegisterPayload(phoneNumber: $phoneNumber, email: $email, fullName: $fullName, password: $password)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RegisterPayloadImpl &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
+            (identical(other.password, password) ||
+                other.password == password));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, phoneNumber, email, fullName, password);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RegisterPayloadImplCopyWith<_$RegisterPayloadImpl> get copyWith =>
+      __$$RegisterPayloadImplCopyWithImpl<_$RegisterPayloadImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RegisterPayloadImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _RegisterPayload implements RegisterPayload {
+  const factory _RegisterPayload(
+      {@JsonKey(name: "phone_number") required final String phoneNumber,
+      required final String email,
+      @JsonKey(name: "fullname") required final String fullName,
+      required final String password}) = _$RegisterPayloadImpl;
+
+  factory _RegisterPayload.fromJson(Map<String, dynamic> json) =
+      _$RegisterPayloadImpl.fromJson;
+
+  @override
+  @JsonKey(name: "phone_number")
+  String get phoneNumber;
+  @override
+  String get email;
+  @override
+  @JsonKey(name: "fullname")
+  String get fullName;
+  @override
+  String get password;
+  @override
+  @JsonKey(ignore: true)
+  _$$RegisterPayloadImplCopyWith<_$RegisterPayloadImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

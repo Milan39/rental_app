@@ -41,3 +41,16 @@ class UserModel with _$UserModel {
       _$UserModelFromJson(json);
 }
 
+@freezed
+class RegisterPayload with _$RegisterPayload {
+  const factory RegisterPayload({
+    @JsonKey(name: "phone_number") required String phoneNumber,
+    required String email,
+    @JsonKey(name: "fullname") required String fullName,
+    required String password,
+  }) = _RegisterPayload;
+
+  @freezed
+  factory RegisterPayload.fromJson(Map<String, Object?> json) =>
+      _$RegisterPayloadFromJson(json);
+}
