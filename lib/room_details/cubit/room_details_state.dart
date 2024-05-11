@@ -9,7 +9,14 @@ class RoomDetailsState extends Equatable {
 
 class RoomDetailsLoading extends RoomDetailsState {}
 
-class RoomDetailsLoaded extends RoomDetailsState {}
+class RoomDetailsLoaded extends RoomDetailsState {
+  final RoomDetailModel roomDetails;
+
+  const RoomDetailsLoaded({required this.roomDetails});
+
+  @override
+  List<Object?> get props => [roomDetails];
+}
 
 class RoomDetailsFailure extends RoomDetailsState {
   final String message;

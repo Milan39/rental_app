@@ -4,23 +4,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ghar_bhada/home/model/home_room_model.dart';
 import 'package:ghar_bhada/home/repository/home_repository.dart';
 
-part 'room_details_state.dart';
+part 'home_room_state.dart';
 
-class RoomDetailsCubit extends Cubit<RoomDetailsState> {
+class HomeRoomCubit extends Cubit<HomeRoomState> {
   final HomeRepository repository;
 
-  RoomDetailsCubit({required this.repository})
-      : super(const RoomDetailsState()) {
+  HomeRoomCubit({required this.repository})
+      : super(const HomeRoomState()) {
     fetchRoomDetails();
   }
 
   Future<void> fetchRoomDetails() async {
-    emit(RoomDetailLoading());
+    emit(HomeRoomLoading());
     try {
       final roomDetails = await repository.fetchRoomDetails();
-      emit(RoomDetailsLoaded(rooms: roomDetails));
+      emit(HomeRoomLoaded(rooms: roomDetails));
     } on DioException catch (e) {
-      emit(RoomDetailsFailure(message: e.toString()));
+      emit(HomeRoomFailure(message: e.toString()));
     }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -5,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ghar_bhada/core/constant.dart';
 import 'package:ghar_bhada/home/cubit/home_cubit/home_cubit.dart';
-import 'package:ghar_bhada/home/cubit/room_detail_cubit/room_details_cubit.dart';
+import 'package:ghar_bhada/home/cubit/room_detail_cubit/home_room_cubit.dart';
 import 'package:ghar_bhada/home/model/home_room_model.dart';
 import 'package:ghar_bhada/injection_container.dart';
 import 'package:go_router/go_router.dart';
@@ -22,7 +23,7 @@ class HomeScreenTab extends StatelessWidget {
           create: (context) => sl<HomeCubit>()..fetchUserInfo(),
         ),
         BlocProvider(
-          create: (context) => sl<RoomDetailsCubit>()..fetchRoomDetails(),
+          create: (context) => sl<HomeRoomCubit>()..fetchRoomDetails(),
         ),
       ],
       child: BlocBuilder<HomeCubit, HomeState>(
@@ -89,9 +90,9 @@ class HomeScreenTab extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 10.h),
-                  BlocBuilder<RoomDetailsCubit, RoomDetailsState>(
+                  BlocBuilder<HomeRoomCubit, HomeRoomState>(
                     builder: (context, state) {
-                      return state is RoomDetailsLoaded
+                      return state is HomeRoomLoaded
                           ? Column(
                               children: List.generate(
                                 state.rooms.length,
@@ -102,33 +103,17 @@ class HomeScreenTab extends StatelessWidget {
                                 },
                               ),
                             )
-                          : const Center(child: const CircularProgressIndicator());
+                          : Center(
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 150.h),
+                                child: CupertinoActivityIndicator(
+                                  color: kPrimaryPurple,
+                                  radius: 15.r,
+                                ),
+                              ),
+                            );
                     },
                   ),
-                  // const DetailsCard(
-                  //   imagePath: 'assets/images/property.png',
-                  //   location: "Lakside Pokhara",
-                  //   mapLocation: "Alice Springs NT 0870, Nepal",
-                  //   price: '10,000',
-                  // ),
-                  // const DetailsCard(
-                  //   imagePath: 'assets/images/property2.png',
-                  //   location: "Kathmandu Nepal",
-                  //   mapLocation: "location near ktm, Nepal",
-                  //   price: '20,000',
-                  // ),
-                  // const DetailsCard(
-                  //   imagePath: 'assets/images/property3.png',
-                  //   location: "Pokhara",
-                  //   mapLocation: "Alice Springs NT 0870, Nepal",
-                  //   price: '10,000',
-                  // ),
-                  // const DetailsCard(
-                  //   imagePath: 'assets/images/property4.png',
-                  //   location: "Lakside Pokhara",
-                  //   mapLocation: "location near Rastra Bank Chowk, Nepal",
-                  //   price: '30,000',
-                  // ),
                 ],
               ),
             ),
@@ -140,7 +125,7 @@ class HomeScreenTab extends StatelessWidget {
 }
 
 class DetailsCard extends StatelessWidget {
-  final RoomDetailModel rooms;
+  final HomeRoomModel rooms;
 
   const DetailsCard({
     super.key,
@@ -153,7 +138,7 @@ class DetailsCard extends StatelessWidget {
       onTap: () {
         context.pushNamed(
           "details",
-          extra: rooms.displayImage,
+          extra: rooms.id,
         );
       },
       child: Container(
