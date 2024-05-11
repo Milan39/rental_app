@@ -11,6 +11,7 @@ class UserEntity with _$UserEntity {
     required String accessToken,
     required String? refreshToken,
     required String avatar,
+    @JsonKey(name: "user_type") required String userType,
   }) = _UserEntity;
 
   factory UserEntity.fromJson(Map<String, Object?> json)

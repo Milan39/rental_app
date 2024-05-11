@@ -369,6 +369,8 @@ mixin _$UserModel {
   String get fullName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get avatar => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_type')
+  String get userType => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_first_login')
   bool get isFirstLogin => throw _privateConstructorUsedError;
 
@@ -388,6 +390,7 @@ abstract class $UserModelCopyWith<$Res> {
       @JsonKey(name: 'fullname') String fullName,
       String email,
       String avatar,
+      @JsonKey(name: 'user_type') String userType,
       @JsonKey(name: 'is_first_login') bool isFirstLogin});
 }
 
@@ -408,6 +411,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? fullName = null,
     Object? email = null,
     Object? avatar = null,
+    Object? userType = null,
     Object? isFirstLogin = null,
   }) {
     return _then(_value.copyWith(
@@ -426,6 +430,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       avatar: null == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
+              as String,
+      userType: null == userType
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
               as String,
       isFirstLogin: null == isFirstLogin
           ? _value.isFirstLogin
@@ -448,6 +456,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
       @JsonKey(name: 'fullname') String fullName,
       String email,
       String avatar,
+      @JsonKey(name: 'user_type') String userType,
       @JsonKey(name: 'is_first_login') bool isFirstLogin});
 }
 
@@ -466,6 +475,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? fullName = null,
     Object? email = null,
     Object? avatar = null,
+    Object? userType = null,
     Object? isFirstLogin = null,
   }) {
     return _then(_$UserModelImpl(
@@ -485,6 +495,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String,
+      userType: null == userType
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
+              as String,
       isFirstLogin: null == isFirstLogin
           ? _value.isFirstLogin
           : isFirstLogin // ignore: cast_nullable_to_non_nullable
@@ -501,6 +515,7 @@ class _$UserModelImpl implements _UserModel {
       @JsonKey(name: 'fullname') required this.fullName,
       required this.email,
       required this.avatar,
+      @JsonKey(name: 'user_type') required this.userType,
       @JsonKey(name: 'is_first_login') required this.isFirstLogin});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -516,12 +531,15 @@ class _$UserModelImpl implements _UserModel {
   @override
   final String avatar;
   @override
+  @JsonKey(name: 'user_type')
+  final String userType;
+  @override
   @JsonKey(name: 'is_first_login')
   final bool isFirstLogin;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, fullName: $fullName, email: $email, avatar: $avatar, isFirstLogin: $isFirstLogin)';
+    return 'UserModel(id: $id, fullName: $fullName, email: $email, avatar: $avatar, userType: $userType, isFirstLogin: $isFirstLogin)';
   }
 
   @override
@@ -534,14 +552,16 @@ class _$UserModelImpl implements _UserModel {
                 other.fullName == fullName) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.avatar, avatar) || other.avatar == avatar) &&
+            (identical(other.userType, userType) ||
+                other.userType == userType) &&
             (identical(other.isFirstLogin, isFirstLogin) ||
                 other.isFirstLogin == isFirstLogin));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, fullName, email, avatar, isFirstLogin);
+  int get hashCode => Object.hash(
+      runtimeType, id, fullName, email, avatar, userType, isFirstLogin);
 
   @JsonKey(ignore: true)
   @override
@@ -563,6 +583,7 @@ abstract class _UserModel implements UserModel {
           @JsonKey(name: 'fullname') required final String fullName,
           required final String email,
           required final String avatar,
+          @JsonKey(name: 'user_type') required final String userType,
           @JsonKey(name: 'is_first_login') required final bool isFirstLogin}) =
       _$UserModelImpl;
 
@@ -578,6 +599,9 @@ abstract class _UserModel implements UserModel {
   String get email;
   @override
   String get avatar;
+  @override
+  @JsonKey(name: 'user_type')
+  String get userType;
   @override
   @JsonKey(name: 'is_first_login')
   bool get isFirstLogin;

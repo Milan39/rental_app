@@ -3,6 +3,7 @@ import 'package:ghar_bhada/auth/cubit/lanloard_login/land_loard_login_cubit.dart
 import 'package:ghar_bhada/auth/cubit/login_cubit.dart';
 import 'package:ghar_bhada/home/cubit/home_cubit/home_cubit.dart';
 import 'package:ghar_bhada/home/repository/home_repository.dart';
+import 'package:ghar_bhada/profile/cubit/logout_cubit.dart';
 import 'package:ghar_bhada/room_details/cubit/room_details_cubit.dart';
 import 'package:ghar_bhada/room_details/repository/room_detail_repository.dart';
 import 'package:ghar_bhada/splash/cubit/splash_cubit.dart';
@@ -26,6 +27,7 @@ Future<void> init() async {
   sl.registerFactory(() => HomeCubit(secureStorage: sl()));
   sl.registerFactory(() => HomeRoomCubit(repository: sl()));
   sl.registerFactory(() => RoomDetailsCubit(repository: sl()));
+  sl.registerFactory(() => LogoutCubit(secureStorage: sl()));
 
   // Repository
   sl.registerLazySingleton(() => AuthRepository(apiClient: sl()));

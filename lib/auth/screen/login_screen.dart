@@ -38,7 +38,6 @@ class LoginScreen extends StatelessWidget {
                 }
               },
               builder: (context, state) {
-                print(state);
                 return Center(
                   child: Column(
                     children: [

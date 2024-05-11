@@ -12,8 +12,8 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
 
-class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key});
+class RoomDetailScreen extends StatelessWidget {
+  const RoomDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +33,14 @@ class DetailScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.r),
           ),
           child: Center(
-              child: Text(
-                'Rent Now',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .copyWith(color: Colors.white),
-              )),
+            child: Text(
+              'Sold',
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .copyWith(color: Colors.white),
+            ),
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -59,57 +60,6 @@ class DetailScreen extends StatelessWidget {
                         child: const CustomAppBar(title: "Details"),
                       ),
                       SizedBox(height: 5.h),
-                      // CarouselSlider(
-                      //   options: CarouselOptions(height: 130.h),
-                      //   items: state.roomDetails.roomImage.map((roomDetails) {
-                      //     return Builder(
-                      //       builder: (BuildContext context) {
-                      //         return Stack(
-                      //           children: [
-                      //             Image.network(
-                      //               // state.roomDetails.displayImage,
-                      //               roomDetails.image,
-                      //               height: 130.h,
-                      //               width: double.infinity,
-                      //               fit: BoxFit.cover,
-                      //             ),
-                      //             Positioned(
-                      //               top: 100.h,
-                      //               right: 15.w,
-                      //               child: Container(
-                      //                 height: 20.h,
-                      //                 width: 70.w,
-                      //                 decoration: BoxDecoration(
-                      //                   color: Colors.black,
-                      //                   borderRadius:
-                      //                       BorderRadius.circular(20.r),
-                      //                 ),
-                      //                 alignment: Alignment.center,
-                      //                 child: ListTile(
-                      //                   visualDensity: const VisualDensity(
-                      //                       horizontal: 0, vertical: -4),
-                      //                   dense: true,
-                      //                   horizontalTitleGap: 0,
-                      //                   minLeadingWidth: 25.w,
-                      //                   contentPadding: EdgeInsets.only(
-                      //                       right: 0.r, left: 10.r),
-                      //                   leading: const Icon(Icons.image),
-                      //                   title: Text(
-                      //                     "1/${state.roomDetails.roomImage.length}",
-                      //                     style: Theme.of(context)
-                      //                         .textTheme
-                      //                         .bodyMedium!
-                      //                         .copyWith(color: Colors.white),
-                      //                   ),
-                      //                 ),
-                      //               ),
-                      //             )
-                      //           ],
-                      //         );
-                      //       },
-                      //     );
-                      //   }).toList(),
-                      // ),
                       CarouselSlider.builder(
                         itemCount: state.roomDetails.roomImage.length,
                         itemBuilder: (BuildContext context, int itemIndex,

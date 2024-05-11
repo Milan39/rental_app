@@ -26,6 +26,8 @@ mixin _$UserEntity {
   String get accessToken => throw _privateConstructorUsedError;
   String? get refreshToken => throw _privateConstructorUsedError;
   String get avatar => throw _privateConstructorUsedError;
+  @JsonKey(name: "user_type")
+  String get userType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +47,8 @@ abstract class $UserEntityCopyWith<$Res> {
       String email,
       String accessToken,
       String? refreshToken,
-      String avatar});
+      String avatar,
+      @JsonKey(name: "user_type") String userType});
 }
 
 /// @nodoc
@@ -67,6 +70,7 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
     Object? accessToken = null,
     Object? refreshToken = freezed,
     Object? avatar = null,
+    Object? userType = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -93,6 +97,10 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String,
+      userType: null == userType
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -111,7 +119,8 @@ abstract class _$$UserEntityImplCopyWith<$Res>
       String email,
       String accessToken,
       String? refreshToken,
-      String avatar});
+      String avatar,
+      @JsonKey(name: "user_type") String userType});
 }
 
 /// @nodoc
@@ -131,6 +140,7 @@ class __$$UserEntityImplCopyWithImpl<$Res>
     Object? accessToken = null,
     Object? refreshToken = freezed,
     Object? avatar = null,
+    Object? userType = null,
   }) {
     return _then(_$UserEntityImpl(
       id: null == id
@@ -157,6 +167,10 @@ class __$$UserEntityImplCopyWithImpl<$Res>
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String,
+      userType: null == userType
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -170,7 +184,8 @@ class _$UserEntityImpl implements _UserEntity {
       required this.email,
       required this.accessToken,
       required this.refreshToken,
-      required this.avatar});
+      required this.avatar,
+      @JsonKey(name: "user_type") required this.userType});
 
   factory _$UserEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserEntityImplFromJson(json);
@@ -187,10 +202,13 @@ class _$UserEntityImpl implements _UserEntity {
   final String? refreshToken;
   @override
   final String avatar;
+  @override
+  @JsonKey(name: "user_type")
+  final String userType;
 
   @override
   String toString() {
-    return 'UserEntity(id: $id, fullName: $fullName, email: $email, accessToken: $accessToken, refreshToken: $refreshToken, avatar: $avatar)';
+    return 'UserEntity(id: $id, fullName: $fullName, email: $email, accessToken: $accessToken, refreshToken: $refreshToken, avatar: $avatar, userType: $userType)';
   }
 
   @override
@@ -206,13 +224,15 @@ class _$UserEntityImpl implements _UserEntity {
                 other.accessToken == accessToken) &&
             (identical(other.refreshToken, refreshToken) ||
                 other.refreshToken == refreshToken) &&
-            (identical(other.avatar, avatar) || other.avatar == avatar));
+            (identical(other.avatar, avatar) || other.avatar == avatar) &&
+            (identical(other.userType, userType) ||
+                other.userType == userType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, fullName, email, accessToken, refreshToken, avatar);
+  int get hashCode => Object.hash(runtimeType, id, fullName, email, accessToken,
+      refreshToken, avatar, userType);
 
   @JsonKey(ignore: true)
   @override
@@ -230,12 +250,14 @@ class _$UserEntityImpl implements _UserEntity {
 
 abstract class _UserEntity implements UserEntity {
   const factory _UserEntity(
-      {required final String id,
-      required final String fullName,
-      required final String email,
-      required final String accessToken,
-      required final String? refreshToken,
-      required final String avatar}) = _$UserEntityImpl;
+          {required final String id,
+          required final String fullName,
+          required final String email,
+          required final String accessToken,
+          required final String? refreshToken,
+          required final String avatar,
+          @JsonKey(name: "user_type") required final String userType}) =
+      _$UserEntityImpl;
 
   factory _UserEntity.fromJson(Map<String, dynamic> json) =
       _$UserEntityImpl.fromJson;
@@ -252,6 +274,9 @@ abstract class _UserEntity implements UserEntity {
   String? get refreshToken;
   @override
   String get avatar;
+  @override
+  @JsonKey(name: "user_type")
+  String get userType;
   @override
   @JsonKey(ignore: true)
   _$$UserEntityImplCopyWith<_$UserEntityImpl> get copyWith =>

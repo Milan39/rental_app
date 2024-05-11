@@ -14,6 +14,7 @@ _$UserEntityImpl _$$UserEntityImplFromJson(Map<String, dynamic> json) =>
       accessToken: json['accessToken'] as String,
       refreshToken: json['refreshToken'] as String?,
       avatar: json['avatar'] as String,
+      userType: json['user_type'] as String,
     );
 
 Map<String, dynamic> _$$UserEntityImplToJson(_$UserEntityImpl instance) =>
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$UserEntityImplToJson(_$UserEntityImpl instance) =>
       'accessToken': instance.accessToken,
       'refreshToken': instance.refreshToken,
       'avatar': instance.avatar,
+      'user_type': instance.userType,
     };

@@ -33,6 +33,7 @@ class UserModel with _$UserModel {
     @JsonKey(name: 'fullname') required String fullName,
     required String email,
     required String avatar,
+    @JsonKey(name: 'user_type') required String userType,
     @JsonKey(name: 'is_first_login') required bool isFirstLogin,
   }) = _UserModel;
 

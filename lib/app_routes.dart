@@ -68,7 +68,7 @@ class AppRoutes {
         name: 'details',
         path: '/details',
         pageBuilder: (context, state) => CustomTransitionPage(
-          child: const DetailScreen(),
+          child: const RoomDetailScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
             scale: animation,

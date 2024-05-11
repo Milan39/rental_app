@@ -39,6 +39,7 @@ class LoginCubit extends Cubit<LoginState> {
             refreshToken: loginResponse.refresh,
             avatar: loginResponse.user.avatar,
             email: loginResponse.user.email,
+            userType: loginResponse.user.userType,
           ),
         );
 
