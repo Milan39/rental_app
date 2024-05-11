@@ -147,8 +147,13 @@ class LoginScreen extends StatelessWidget {
                               SizedBox(height: 10.h),
                               BlocProvider(
                                 create: (context) => sl<LandLordLoginCubit>(),
-                                child: BlocBuilder<LandLordLoginCubit,
+                                child: BlocConsumer<LandLordLoginCubit,
                                     LandLordLoginState>(
+                                  listener: (context, state){
+                                    if (state.status == LoginStatus.authenticated) {
+                                      context.pushNamed('home');
+                                    }
+                                  },
                                   builder: (context, state) {
                                     return InkWell(
                                       onTap: () {
@@ -159,7 +164,9 @@ class LoginScreen extends StatelessWidget {
                                             ?.saveAndValidate();
                                         context
                                             .read<LandLordLoginCubit>()
-                                            .authenticate();
+                                            .landLordLogin(
+                                          formKey: context.read<LoginCubit>().formKey
+                                        );
                                       },
                                       child: Container(
                                         width: double.infinity,

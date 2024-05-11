@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ghar_bhada/core/constant.dart';
 import 'package:ghar_bhada/home/cubit/home_cubit/home_cubit.dart';
 import 'package:ghar_bhada/injection_container.dart';
-import 'package:ghar_bhada/profile/cubit/logout_cubit.dart';
 import 'package:ghar_bhada/profile/widget/logout_tile.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,7 +15,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => sl<HomeCubit>(),
+        create: (context) => sl<HomeCubit>()..fetchUserInfo(),
         child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             return Column(

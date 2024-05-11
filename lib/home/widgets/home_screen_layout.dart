@@ -50,7 +50,7 @@ class HomeScreenTab extends StatelessWidget {
                         width: 45.w,
                         padding: EdgeInsets.symmetric(vertical: 5.r, horizontal: 5.r),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.r),
+                          shape: BoxShape.circle,
                           border: Border.all(
                               color: kPrimaryPurple.withOpacity(0.2)),
                           image: DecorationImage(
@@ -241,7 +241,9 @@ class SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return FormBuilderTextField(
       name: "search",
-      onSubmitted: (value) {},
+      onSubmitted: (value) {
+        context.read<HomeRoomCubit>().fetchRoomDetails(query: value);
+      },
       autofocus: false,
       style: Theme.of(context).textTheme.bodyLarge,
       cursorColor: kPrimaryRed,

@@ -34,6 +34,8 @@ mixin _$RoomDetailModel {
   bool get isPublished => throw _privateConstructorUsedError;
   @JsonKey(name: "is_active")
   bool get isActive => throw _privateConstructorUsedError;
+  @JsonKey(name: "landlord_user")
+  LandLordUser get landLordUser => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,7 +58,10 @@ abstract class $RoomDetailModelCopyWith<$Res> {
       @JsonKey(name: 'room_image') List<RoomImage> roomImage,
       String description,
       @JsonKey(name: "is_published") bool isPublished,
-      @JsonKey(name: "is_active") bool isActive});
+      @JsonKey(name: "is_active") bool isActive,
+      @JsonKey(name: "landlord_user") LandLordUser landLordUser});
+
+  $LandLordUserCopyWith<$Res> get landLordUser;
 }
 
 /// @nodoc
@@ -81,6 +86,7 @@ class _$RoomDetailModelCopyWithImpl<$Res, $Val extends RoomDetailModel>
     Object? description = null,
     Object? isPublished = null,
     Object? isActive = null,
+    Object? landLordUser = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -119,7 +125,19 @@ class _$RoomDetailModelCopyWithImpl<$Res, $Val extends RoomDetailModel>
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
+      landLordUser: null == landLordUser
+          ? _value.landLordUser
+          : landLordUser // ignore: cast_nullable_to_non_nullable
+              as LandLordUser,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LandLordUserCopyWith<$Res> get landLordUser {
+    return $LandLordUserCopyWith<$Res>(_value.landLordUser, (value) {
+      return _then(_value.copyWith(landLordUser: value) as $Val);
+    });
   }
 }
 
@@ -140,7 +158,11 @@ abstract class _$$RoomDetailModelImplCopyWith<$Res>
       @JsonKey(name: 'room_image') List<RoomImage> roomImage,
       String description,
       @JsonKey(name: "is_published") bool isPublished,
-      @JsonKey(name: "is_active") bool isActive});
+      @JsonKey(name: "is_active") bool isActive,
+      @JsonKey(name: "landlord_user") LandLordUser landLordUser});
+
+  @override
+  $LandLordUserCopyWith<$Res> get landLordUser;
 }
 
 /// @nodoc
@@ -163,6 +185,7 @@ class __$$RoomDetailModelImplCopyWithImpl<$Res>
     Object? description = null,
     Object? isPublished = null,
     Object? isActive = null,
+    Object? landLordUser = null,
   }) {
     return _then(_$RoomDetailModelImpl(
       id: null == id
@@ -201,6 +224,10 @@ class __$$RoomDetailModelImplCopyWithImpl<$Res>
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
+      landLordUser: null == landLordUser
+          ? _value.landLordUser
+          : landLordUser // ignore: cast_nullable_to_non_nullable
+              as LandLordUser,
     ));
   }
 }
@@ -217,7 +244,8 @@ class _$RoomDetailModelImpl implements _RoomDetailModel {
       @JsonKey(name: 'room_image') required final List<RoomImage> roomImage,
       required this.description,
       @JsonKey(name: "is_published") required this.isPublished,
-      @JsonKey(name: "is_active") required this.isActive})
+      @JsonKey(name: "is_active") required this.isActive,
+      @JsonKey(name: "landlord_user") required this.landLordUser})
       : _roomImage = roomImage;
 
   factory _$RoomDetailModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -252,10 +280,13 @@ class _$RoomDetailModelImpl implements _RoomDetailModel {
   @override
   @JsonKey(name: "is_active")
   final bool isActive;
+  @override
+  @JsonKey(name: "landlord_user")
+  final LandLordUser landLordUser;
 
   @override
   String toString() {
-    return 'RoomDetailModel(id: $id, streetLocation: $streetLocation, city: $city, price: $price, displayImage: $displayImage, roomImage: $roomImage, description: $description, isPublished: $isPublished, isActive: $isActive)';
+    return 'RoomDetailModel(id: $id, streetLocation: $streetLocation, city: $city, price: $price, displayImage: $displayImage, roomImage: $roomImage, description: $description, isPublished: $isPublished, isActive: $isActive, landLordUser: $landLordUser)';
   }
 
   @override
@@ -277,7 +308,9 @@ class _$RoomDetailModelImpl implements _RoomDetailModel {
             (identical(other.isPublished, isPublished) ||
                 other.isPublished == isPublished) &&
             (identical(other.isActive, isActive) ||
-                other.isActive == isActive));
+                other.isActive == isActive) &&
+            (identical(other.landLordUser, landLordUser) ||
+                other.landLordUser == landLordUser));
   }
 
   @JsonKey(ignore: true)
@@ -292,7 +325,8 @@ class _$RoomDetailModelImpl implements _RoomDetailModel {
       const DeepCollectionEquality().hash(_roomImage),
       description,
       isPublished,
-      isActive);
+      isActive,
+      landLordUser);
 
   @JsonKey(ignore: true)
   @override
@@ -319,8 +353,9 @@ abstract class _RoomDetailModel implements RoomDetailModel {
       @JsonKey(name: 'room_image') required final List<RoomImage> roomImage,
       required final String description,
       @JsonKey(name: "is_published") required final bool isPublished,
-      @JsonKey(name: "is_active")
-      required final bool isActive}) = _$RoomDetailModelImpl;
+      @JsonKey(name: "is_active") required final bool isActive,
+      @JsonKey(name: "landlord_user")
+      required final LandLordUser landLordUser}) = _$RoomDetailModelImpl;
 
   factory _RoomDetailModel.fromJson(Map<String, dynamic> json) =
       _$RoomDetailModelImpl.fromJson;
@@ -348,6 +383,9 @@ abstract class _RoomDetailModel implements RoomDetailModel {
   @override
   @JsonKey(name: "is_active")
   bool get isActive;
+  @override
+  @JsonKey(name: "landlord_user")
+  LandLordUser get landLordUser;
   @override
   @JsonKey(ignore: true)
   _$$RoomDetailModelImplCopyWith<_$RoomDetailModelImpl> get copyWith =>
@@ -487,4 +525,565 @@ abstract class _RoomImage implements RoomImage {
   @JsonKey(ignore: true)
   _$$RoomImageImplCopyWith<_$RoomImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+LandLordUser _$LandLordUserFromJson(Map<String, dynamic> json) {
+  return _LandLordUser.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LandLordUser {
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'fullname')
+  String get fullName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'phone_number')
+  String get phoneNumber => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LandLordUserCopyWith<LandLordUser> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LandLordUserCopyWith<$Res> {
+  factory $LandLordUserCopyWith(
+          LandLordUser value, $Res Function(LandLordUser) then) =
+      _$LandLordUserCopyWithImpl<$Res, LandLordUser>;
+  @useResult
+  $Res call(
+      {String id,
+      @JsonKey(name: 'fullname') String fullName,
+      @JsonKey(name: 'phone_number') String phoneNumber});
+}
+
+/// @nodoc
+class _$LandLordUserCopyWithImpl<$Res, $Val extends LandLordUser>
+    implements $LandLordUserCopyWith<$Res> {
+  _$LandLordUserCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? fullName = null,
+    Object? phoneNumber = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$LandLordUserImplCopyWith<$Res>
+    implements $LandLordUserCopyWith<$Res> {
+  factory _$$LandLordUserImplCopyWith(
+          _$LandLordUserImpl value, $Res Function(_$LandLordUserImpl) then) =
+      __$$LandLordUserImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      @JsonKey(name: 'fullname') String fullName,
+      @JsonKey(name: 'phone_number') String phoneNumber});
+}
+
+/// @nodoc
+class __$$LandLordUserImplCopyWithImpl<$Res>
+    extends _$LandLordUserCopyWithImpl<$Res, _$LandLordUserImpl>
+    implements _$$LandLordUserImplCopyWith<$Res> {
+  __$$LandLordUserImplCopyWithImpl(
+      _$LandLordUserImpl _value, $Res Function(_$LandLordUserImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? fullName = null,
+    Object? phoneNumber = null,
+  }) {
+    return _then(_$LandLordUserImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$LandLordUserImpl implements _LandLordUser {
+  const _$LandLordUserImpl(
+      {required this.id,
+      @JsonKey(name: 'fullname') required this.fullName,
+      @JsonKey(name: 'phone_number') required this.phoneNumber});
+
+  factory _$LandLordUserImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LandLordUserImplFromJson(json);
+
+  @override
+  final String id;
+  @override
+  @JsonKey(name: 'fullname')
+  final String fullName;
+  @override
+  @JsonKey(name: 'phone_number')
+  final String phoneNumber;
+
+  @override
+  String toString() {
+    return 'LandLordUser(id: $id, fullName: $fullName, phoneNumber: $phoneNumber)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LandLordUserImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, fullName, phoneNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LandLordUserImplCopyWith<_$LandLordUserImpl> get copyWith =>
+      __$$LandLordUserImplCopyWithImpl<_$LandLordUserImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$LandLordUserImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _LandLordUser implements LandLordUser {
+  const factory _LandLordUser(
+          {required final String id,
+          @JsonKey(name: 'fullname') required final String fullName,
+          @JsonKey(name: 'phone_number') required final String phoneNumber}) =
+      _$LandLordUserImpl;
+
+  factory _LandLordUser.fromJson(Map<String, dynamic> json) =
+      _$LandLordUserImpl.fromJson;
+
+  @override
+  String get id;
+  @override
+  @JsonKey(name: 'fullname')
+  String get fullName;
+  @override
+  @JsonKey(name: 'phone_number')
+  String get phoneNumber;
+  @override
+  @JsonKey(ignore: true)
+  _$$LandLordUserImplCopyWith<_$LandLordUserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+BookingResponse _$BookingResponseFromJson(Map<String, dynamic> json) {
+  return _BookingResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$BookingResponse {
+  String get id => throw _privateConstructorUsedError;
+  String get room => throw _privateConstructorUsedError;
+  @JsonKey(name: "total_amount")
+  String get totalAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: "normal_user")
+  String get normalUser => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $BookingResponseCopyWith<BookingResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BookingResponseCopyWith<$Res> {
+  factory $BookingResponseCopyWith(
+          BookingResponse value, $Res Function(BookingResponse) then) =
+      _$BookingResponseCopyWithImpl<$Res, BookingResponse>;
+  @useResult
+  $Res call(
+      {String id,
+      String room,
+      @JsonKey(name: "total_amount") String totalAmount,
+      @JsonKey(name: "normal_user") String normalUser});
+}
+
+/// @nodoc
+class _$BookingResponseCopyWithImpl<$Res, $Val extends BookingResponse>
+    implements $BookingResponseCopyWith<$Res> {
+  _$BookingResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? room = null,
+    Object? totalAmount = null,
+    Object? normalUser = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      room: null == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as String,
+      totalAmount: null == totalAmount
+          ? _value.totalAmount
+          : totalAmount // ignore: cast_nullable_to_non_nullable
+              as String,
+      normalUser: null == normalUser
+          ? _value.normalUser
+          : normalUser // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$BookingResponseImplCopyWith<$Res>
+    implements $BookingResponseCopyWith<$Res> {
+  factory _$$BookingResponseImplCopyWith(_$BookingResponseImpl value,
+          $Res Function(_$BookingResponseImpl) then) =
+      __$$BookingResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      String room,
+      @JsonKey(name: "total_amount") String totalAmount,
+      @JsonKey(name: "normal_user") String normalUser});
+}
+
+/// @nodoc
+class __$$BookingResponseImplCopyWithImpl<$Res>
+    extends _$BookingResponseCopyWithImpl<$Res, _$BookingResponseImpl>
+    implements _$$BookingResponseImplCopyWith<$Res> {
+  __$$BookingResponseImplCopyWithImpl(
+      _$BookingResponseImpl _value, $Res Function(_$BookingResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? room = null,
+    Object? totalAmount = null,
+    Object? normalUser = null,
+  }) {
+    return _then(_$BookingResponseImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      room: null == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as String,
+      totalAmount: null == totalAmount
+          ? _value.totalAmount
+          : totalAmount // ignore: cast_nullable_to_non_nullable
+              as String,
+      normalUser: null == normalUser
+          ? _value.normalUser
+          : normalUser // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$BookingResponseImpl implements _BookingResponse {
+  const _$BookingResponseImpl(
+      {required this.id,
+      required this.room,
+      @JsonKey(name: "total_amount") required this.totalAmount,
+      @JsonKey(name: "normal_user") required this.normalUser});
+
+  factory _$BookingResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BookingResponseImplFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final String room;
+  @override
+  @JsonKey(name: "total_amount")
+  final String totalAmount;
+  @override
+  @JsonKey(name: "normal_user")
+  final String normalUser;
+
+  @override
+  String toString() {
+    return 'BookingResponse(id: $id, room: $room, totalAmount: $totalAmount, normalUser: $normalUser)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BookingResponseImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.room, room) || other.room == room) &&
+            (identical(other.totalAmount, totalAmount) ||
+                other.totalAmount == totalAmount) &&
+            (identical(other.normalUser, normalUser) ||
+                other.normalUser == normalUser));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, room, totalAmount, normalUser);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BookingResponseImplCopyWith<_$BookingResponseImpl> get copyWith =>
+      __$$BookingResponseImplCopyWithImpl<_$BookingResponseImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BookingResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _BookingResponse implements BookingResponse {
+  const factory _BookingResponse(
+          {required final String id,
+          required final String room,
+          @JsonKey(name: "total_amount") required final String totalAmount,
+          @JsonKey(name: "normal_user") required final String normalUser}) =
+      _$BookingResponseImpl;
+
+  factory _BookingResponse.fromJson(Map<String, dynamic> json) =
+      _$BookingResponseImpl.fromJson;
+
+  @override
+  String get id;
+  @override
+  String get room;
+  @override
+  @JsonKey(name: "total_amount")
+  String get totalAmount;
+  @override
+  @JsonKey(name: "normal_user")
+  String get normalUser;
+  @override
+  @JsonKey(ignore: true)
+  _$$BookingResponseImplCopyWith<_$BookingResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+PaymentCheckoutResponse _$PaymentCheckoutResponseFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentCheckoutResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentCheckoutResponse {
+  String get token => throw _privateConstructorUsedError;
+  String get amount => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentCheckoutResponseCopyWith<PaymentCheckoutResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentCheckoutResponseCopyWith<$Res> {
+  factory $PaymentCheckoutResponseCopyWith(PaymentCheckoutResponse value,
+          $Res Function(PaymentCheckoutResponse) then) =
+      _$PaymentCheckoutResponseCopyWithImpl<$Res, PaymentCheckoutResponse>;
+  @useResult
+  $Res call({String token, String amount});
+}
+
+/// @nodoc
+class _$PaymentCheckoutResponseCopyWithImpl<$Res,
+        $Val extends PaymentCheckoutResponse>
+    implements $PaymentCheckoutResponseCopyWith<$Res> {
+  _$PaymentCheckoutResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? token = null,
+    Object? amount = null,
+  }) {
+    return _then(_value.copyWith(
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$PaymentCheckoutResponseImplCopyWith<$Res>
+    implements $PaymentCheckoutResponseCopyWith<$Res> {
+  factory _$$PaymentCheckoutResponseImplCopyWith(
+          _$PaymentCheckoutResponseImpl value,
+          $Res Function(_$PaymentCheckoutResponseImpl) then) =
+      __$$PaymentCheckoutResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String token, String amount});
+}
+
+/// @nodoc
+class __$$PaymentCheckoutResponseImplCopyWithImpl<$Res>
+    extends _$PaymentCheckoutResponseCopyWithImpl<$Res,
+        _$PaymentCheckoutResponseImpl>
+    implements _$$PaymentCheckoutResponseImplCopyWith<$Res> {
+  __$$PaymentCheckoutResponseImplCopyWithImpl(
+      _$PaymentCheckoutResponseImpl _value,
+      $Res Function(_$PaymentCheckoutResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? token = null,
+    Object? amount = null,
+  }) {
+    return _then(_$PaymentCheckoutResponseImpl(
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PaymentCheckoutResponseImpl implements _PaymentCheckoutResponse {
+  const _$PaymentCheckoutResponseImpl(
+      {required this.token, required this.amount});
+
+  factory _$PaymentCheckoutResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentCheckoutResponseImplFromJson(json);
+
+  @override
+  final String token;
+  @override
+  final String amount;
+
+  @override
+  String toString() {
+    return 'PaymentCheckoutResponse(token: $token, amount: $amount)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentCheckoutResponseImpl &&
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.amount, amount) || other.amount == amount));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, token, amount);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaymentCheckoutResponseImplCopyWith<_$PaymentCheckoutResponseImpl>
+      get copyWith => __$$PaymentCheckoutResponseImplCopyWithImpl<
+          _$PaymentCheckoutResponseImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PaymentCheckoutResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentCheckoutResponse implements PaymentCheckoutResponse {
+  const factory _PaymentCheckoutResponse(
+      {required final String token,
+      required final String amount}) = _$PaymentCheckoutResponseImpl;
+
+  factory _PaymentCheckoutResponse.fromJson(Map<String, dynamic> json) =
+      _$PaymentCheckoutResponseImpl.fromJson;
+
+  @override
+  String get token;
+  @override
+  String get amount;
+  @override
+  @JsonKey(ignore: true)
+  _$$PaymentCheckoutResponseImplCopyWith<_$PaymentCheckoutResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

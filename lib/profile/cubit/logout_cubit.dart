@@ -15,10 +15,9 @@ class LogoutCubit extends Cubit<LogoutState> {
 
   Future<void> logoutUser() async {
     // TODO Bad state: Cannot emit new states after calling close
-    if (!isClosed) {
-      emit(LogoutState.inProcess);
+
+    emit(LogoutState.inProcess);
       await secureStorage.logoutUser();
       emit(LogoutState.success);
-    }
   }
 }

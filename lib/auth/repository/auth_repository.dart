@@ -18,7 +18,7 @@ class AuthRepository {
     LoginPayLoadModel loginPayloadModel,
   ) async {
     final response = await apiClient.dio
-        .post("v1/auth/land-lord-user/login", data: loginPayloadModel.toJson());
+        .post("v1/auth/landloard-user/login", data: loginPayloadModel.toJson());
     return LoginResponseModel.fromJson(response.data);
   }
 }

@@ -28,3 +28,12 @@ class HomeRoomFailure extends HomeRoomState {
   @override
   List<Object> get props => [message];
 }
+
+class SearchNotFound extends HomeRoomState {
+  final String message;
+
+  const SearchNotFound({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
