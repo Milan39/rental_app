@@ -1,121 +1,135 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ghar_bhada/core/constant.dart';
+import 'package:ghar_bhada/home/cubit/home_cubit/home_cubit.dart';
+import 'package:ghar_bhada/home/cubit/room_detail_cubit/home_room_cubit.dart';
+import 'package:ghar_bhada/home/model/home_room_model.dart';
+import 'package:ghar_bhada/injection_container.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreenTab extends StatelessWidget {
   const HomeScreenTab({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: const AlwaysScrollableScrollPhysics(),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10.r),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 10.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Discover \nyour new apartment.",
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w500,
-                      ),
-                ),
-                Container(
-                  height: 25.h,
-                  width: 45.w,
-                  padding: EdgeInsets.symmetric(vertical: 5.r, horizontal: 5.r),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.r),
-                    border: Border.all(color: kPrimaryPurple.withOpacity(0.2)),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/lil_saaz.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                )
-              ],
-            ),
-            SizedBox(height: 10.h),
-            Row(
-              children: [
-                const Expanded(
-                  child: SearchBar(),
-                ),
-                SizedBox(width: 10.w),
-                GestureDetector(
-                  onTap: () {
-                    // TODO
-                  },
-                  child: Container(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 10.r, horizontal: 10.r),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.r),
-                      border:
-                          Border.all(color: kPrimaryPurple.withOpacity(0.2)),
-                    ),
-                    // alignment: Alignment.center,
-                    child: SvgPicture.asset(
-                      'assets/icons/filter.svg',
-                      height: 10.h,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 10.h),
-            const DetailsCard(
-              imagePath: 'assets/images/property.png',
-              location: "Lakside Pokhara",
-              mapLocation: "Alice Springs NT 0870, Nepal",
-              price: '10,000',
-            ),
-            const DetailsCard(
-              imagePath: 'assets/images/property2.png',
-              location: "Kathmandu Nepal",
-              mapLocation: "location near ktm, Nepal",
-              price: '20,000',
-            ),
-            const DetailsCard(
-              imagePath: 'assets/images/property3.png',
-              location: "Pokhara",
-              mapLocation: "Alice Springs NT 0870, Nepal",
-              price: '10,000',
-            ),
-            const DetailsCard(
-              imagePath: 'assets/images/property4.png',
-              location: "Lakside Pokhara",
-              mapLocation: "location near Rastra Bank Chowk, Nepal",
-              price: '30,000',
-            ),
-          ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => sl<HomeCubit>()..fetchUserInfo(),
         ),
+        BlocProvider(
+          create: (context) => sl<HomeRoomCubit>()..fetchRoomDetails(),
+        ),
+      ],
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          return SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 10.r),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 10.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Discover \nyour new apartment.",
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      Container(
+                        height: 25.h,
+                        width: 45.w,
+                        padding: EdgeInsets.symmetric(vertical: 5.r, horizontal: 5.r),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                              color: kPrimaryPurple.withOpacity(0.2)),
+                          image: DecorationImage(
+                            image: NetworkImage(state.avatar),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 10.h),
+                  Row(
+                    children: [
+                      const Expanded(
+                        child: SearchBar(),
+                      ),
+                      SizedBox(width: 10.w),
+                      GestureDetector(
+                        onTap: () {
+                          // TODO
+                        },
+                        child: Container(
+                          padding:
+                          EdgeInsets.symmetric(vertical: 10.r, horizontal: 10.r),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.r),
+                            border:
+                            Border.all(color: kPrimaryPurple.withOpacity(0.2)),
+                          ),
+                          // alignment: Alignment.center,
+                          child: SvgPicture.asset(
+                            'assets/icons/filter.svg',
+                            height: 10.h,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.h),
+                  BlocBuilder<HomeRoomCubit, HomeRoomState>(
+                    builder: (context, state) {
+                      return state is HomeRoomLoaded
+                          ? Column(
+                              children: List.generate(
+                                state.rooms.length,
+                                (index) {
+                                  return DetailsCard(
+                                    rooms: state.rooms[index],
+                                  );
+                                },
+                              ),
+                            )
+                          : Center(
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 100.h),
+                                child: CupertinoActivityIndicator(
+                                  color: kPrimaryPurple,
+                                  radius: 15.r,
+                                ),
+                              ),
+                            );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }
 }
 
 class DetailsCard extends StatelessWidget {
-  final String imagePath;
-  final String location;
-  final String mapLocation;
-  final String price;
+  final HomeRoomModel rooms;
 
   const DetailsCard({
     super.key,
-    required this.imagePath,
-    required this.location,
-    required this.mapLocation,
-    required this.price,
+    required this.rooms,
   });
 
   @override
@@ -124,7 +138,7 @@ class DetailsCard extends StatelessWidget {
       onTap: () {
         context.pushNamed(
           "details",
-           extra: imagePath,
+          extra: rooms.id,
         );
       },
       child: Container(
@@ -154,8 +168,8 @@ class DetailsCard extends StatelessWidget {
                   topLeft: Radius.circular(10.r),
                 ),
                 image: DecorationImage(
-                  image: AssetImage(
-                    imagePath,
+                  image: NetworkImage(
+                    rooms.displayImage,
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -165,7 +179,7 @@ class DetailsCard extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(left: 15.r),
               child: Text(
-                location,
+                rooms.streetLocation,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
@@ -176,8 +190,11 @@ class DetailsCard extends StatelessWidget {
               minLeadingWidth: 20.w,
               contentPadding: EdgeInsets.only(right: 0.r, left: 10.r),
               title: Text(
-                mapLocation,
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.grey),
+                rooms.city,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(color: Colors.grey),
               ),
               leading: SvgPicture.asset(
                 'assets/icons/location.svg',
@@ -188,7 +205,7 @@ class DetailsCard extends StatelessWidget {
               padding: EdgeInsets.only(left: 15.r),
               child: RichText(
                 text: TextSpan(
-                  text: "Rs. $price",
+                  text: "Rs. ${rooms.price}",
                   style: GoogleFonts.roboto(
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.6,
@@ -224,7 +241,9 @@ class SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return FormBuilderTextField(
       name: "search",
-      onSubmitted: (value) {},
+      onSubmitted: (value) {
+        context.read<HomeRoomCubit>().fetchRoomDetails(query: value);
+      },
       autofocus: false,
       style: Theme.of(context).textTheme.bodyLarge,
       cursorColor: kPrimaryRed,

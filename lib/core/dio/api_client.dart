@@ -17,8 +17,7 @@ class ApiClient {
 
   static Dio createDio() {
     var dio = Dio(BaseOptions(
-        // TODO
-        baseUrl: "https://api-dev.revelarena.com",
+        baseUrl: "http://46.250.243.243:8080/",
         contentType: "application/json",
         connectTimeout: const Duration(seconds: 15000),
         receiveTimeout: const Duration(seconds: 15000),
@@ -26,11 +25,12 @@ class ApiClient {
 
     dio.interceptors.addAll({
       AppInterceptor(
-        dio: dio,
-        dioConnectivityRequestRetrier: DioConnectivityRequestRetrier(
           dio: dio,
-          connectivity: Connectivity(),
-        ),
+          dioConnectivityRequestRetrier: DioConnectivityRequestRetrier(
+            dio: dio,
+            connectivity: Connectivity(),
+
+          ),
       )
     });
 

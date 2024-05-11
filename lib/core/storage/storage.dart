@@ -1,8 +1,8 @@
+
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
-import '../../auth/entities/auth_entity.dart';
+import 'package:ghar_bhada/auth/entities/auth_entity.dart';
 
 class SecureStorage {
   final _secureStorage = const FlutterSecureStorage();
@@ -61,15 +61,15 @@ class SecureStorage {
         key: 'currentOrganizer', aOptions: _getAndroidOptions());
   }
 
-  // Future<void> removeRefreshToken() async {
-  //   var user = await readUser();
-  //   var userData = user?.toJson();
-  //   userData?['refreshToken'] = null;
-  //
-  //   await _secureStorage.write(
-  //       key: 'user',
-  //       value: jsonEncode(userData),
-  //       aOptions: _getAndroidOptions());
-  // }
+  Future<void> removeRefreshToken() async {
+    var user = await readUser();
+    var userData = user?.toJson();
+    userData?['refreshToken'] = null;
+
+    await _secureStorage.write(
+        key: 'user',
+        value: jsonEncode(userData),
+        aOptions: _getAndroidOptions());
+  }
 
 }

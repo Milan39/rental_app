@@ -1,4 +1,4 @@
-import 'package:ghar_bhada/auth/models/auth_model.dart';
+import 'package:ghar_bhada/auth/models/login_model.dart';
 import 'package:ghar_bhada/core/dio/api_client.dart';
 
 class AuthRepository {
@@ -6,12 +6,19 @@ class AuthRepository {
 
   AuthRepository({required this.apiClient});
 
-  // Login
   Future<LoginResponseModel> loginUser(
-      LoginPayloadModel loginPayloadModel) async {
-    final response = await apiClient.dio.post("v1/auth/organizer-staff/login",
-        data: loginPayloadModel.toJson());
+    LoginPayLoadModel loginPayloadModel,
+  ) async {
+    final response = await apiClient.dio
+        .post("v1/auth/normal-user-login", data: loginPayloadModel.toJson());
     return LoginResponseModel.fromJson(response.data);
   }
 
+  Future<LoginResponseModel> loginLandLord(
+    LoginPayLoadModel loginPayloadModel,
+  ) async {
+    final response = await apiClient.dio
+        .post("v1/auth/landloard-user/login", data: loginPayloadModel.toJson());
+    return LoginResponseModel.fromJson(response.data);
+  }
 }

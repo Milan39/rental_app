@@ -2,12 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:ghar_bhada/auth/models/auth_model.dart';
+import 'package:ghar_bhada/auth/entities/auth_entity.dart';
+import 'package:ghar_bhada/auth/models/login_model.dart';
 import 'package:ghar_bhada/auth/repository/auth_repository.dart';
 import 'package:ghar_bhada/core/storage/storage.dart';
 
-
-import '../../entities/auth_entity.dart';
 import 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -25,20 +24,25 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> authenticate() async {
     if (formKey.currentState!.isValid) {
       emit(state.copyWith(status: Status.authenticating));
-      final loginPayload = LoginPayloadModel(
+      final loginPayload = LoginPayLoadModel(
         username: formKey.currentState!.value['email'],
         password: formKey.currentState!.value['password'],
       );
       try {
         final loginResponse = await authRepository.loginUser(loginPayload);
         // Save user
-        await secureStorage.writeUser(UserEntity(
-          id: loginResponse.user.id,
-          fullName: loginResponse.user.fullName,
-          accessToken: loginResponse.access,
-          refreshToken: loginResponse.refresh,
-          avatar: loginResponse.user.avatar,
-        ));
+        await secureStorage.writeUser(
+          UserEntity(
+            id: loginResponse.user.id,
+            fullName: loginResponse.user.fullName,
+            accessToken: loginResponse.access,
+            refreshToken: loginResponse.refresh,
+            avatar: loginResponse.user.avatar,
+            email: loginResponse.user.email,
+            userType: loginResponse.user.userType,
+          ),
+        );
+
         emit(state.copyWith(status: Status.authenticated));
       } on DioException catch (e) {
         formKey.currentState?.fields['password']?.invalidate(e.toString());

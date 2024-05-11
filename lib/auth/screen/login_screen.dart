@@ -4,8 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:ghar_bhada/auth/login/cubit/login_cubit.dart';
-import 'package:ghar_bhada/auth/login/cubit/login_state.dart';
+import 'package:ghar_bhada/auth/cubit/lanloard_login/land_loard_login_cubit.dart';
+import 'package:ghar_bhada/auth/cubit/lanloard_login/land_loard_login_state.dart';
+import 'package:ghar_bhada/auth/cubit/login_cubit.dart';
+import 'package:ghar_bhada/auth/cubit/login_state.dart';
 import 'package:ghar_bhada/core/constant.dart';
 import 'package:ghar_bhada/core/material/field_decorations.dart';
 import 'package:go_router/go_router.dart';
@@ -57,26 +59,26 @@ class LoginScreen extends StatelessWidget {
                                     .textTheme
                                     .bodyLarge!
                                     .copyWith(
-                                      fontWeight: FontWeight.w500,
-                                      letterSpacing: 1,
-                                      fontSize: 15.sp,
-                                    ),
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 1,
+                                  fontSize: 15.sp,
+                                ),
                               ),
                               SizedBox(height: 5.h),
                               FormBuilderTextField(
                                 name: 'email',
                                 autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
+                                AutovalidateMode.onUserInteraction,
                                 keyboardType: TextInputType.emailAddress,
                                 style: Theme.of(context).textTheme.bodyLarge,
-                                cursorColor: kPrimaryRed,
+                                cursorColor: kPrimaryPurple,
                                 decoration: textFieldDecoration(
                                   hintText: 'Enter Email Address',
                                 ),
                                 validator: FormBuilderValidators.compose(
                                   [
-                                    // FormBuilderValidators.required(),
-                                    // FormBuilderValidators.email(),
+                                    FormBuilderValidators.required(),
+                                    FormBuilderValidators.email(),
                                   ],
                                 ),
                               ),
@@ -87,17 +89,18 @@ class LoginScreen extends StatelessWidget {
                                     .textTheme
                                     .bodyLarge!
                                     .copyWith(
-                                      fontWeight: FontWeight.w500,
-                                      letterSpacing: 1,
-                                      fontSize: 15.sp,
-                                    ),
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 1,
+                                  fontSize: 15.sp,
+                                ),
                               ),
                               SizedBox(height: 5.h),
                               FormBuilderTextField(
                                 name: 'password',
                                 autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
+                                AutovalidateMode.onUserInteraction,
                                 style: Theme.of(context).textTheme.bodyLarge,
+                                cursorColor: kPrimaryPurple,
                                 decoration: passwordFieldDecoration(
                                   hintText: 'Enter Password',
                                   suffixIcon: IconButton(
@@ -116,13 +119,20 @@ class LoginScreen extends StatelessWidget {
                                 ),
                                 obscureText: state.hidePassword,
                                 validator: FormBuilderValidators.compose([
-                                  // FormBuilderValidators.required(),
+                                  FormBuilderValidators.required(),
                                 ]),
                               ),
                               SizedBox(height: 12.h),
                               InkWell(
                                 onTap: () {
-                                  context.pushNamed('home');
+                                  context
+                                      .read<LoginCubit>()
+                                      .formKey
+                                      .currentState
+                                      ?.saveAndValidate();
+                                  context
+                                      .read<LoginCubit>()
+                                      .authenticate();
                                 },
                                 child: Container(
                                   width: double.infinity,
@@ -135,36 +145,50 @@ class LoginScreen extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(height: 10.h),
-                              InkWell(
-                                onTap: () {
-                                  //   TODO
-                                },
-                                child: Container(
-                                  width: double.infinity,
-                                  padding: EdgeInsets.all(12.r),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10.r),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey[300]!,
-                                        offset: const Offset(1, 2),
-                                        spreadRadius: 1,
-                                        blurRadius: 1,
-                                      )
-                                    ],
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "Login as a Landlord",
-                                      style: GoogleFonts.roboto(
-                                        fontWeight: FontWeight.w600,
-                                        letterSpacing: 0.6,
-                                        fontSize: 14.sp,
-                                        color: kPrimaryPurple,
+                              BlocProvider(
+                                create: (context) => sl<LandLordLoginCubit>(),
+                                child: BlocConsumer<LandLordLoginCubit,
+                                    LandLordLoginState>(
+                                  listener: (context, state){
+                                    if (state.status == LoginStatus.authenticated) {
+                                      context.pushNamed('home');
+                                    }
+                                  },
+                                  builder: (context, state) {
+                                    return InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<LoginCubit>()
+                                            .formKey
+                                            .currentState
+                                            ?.saveAndValidate();
+                                        context
+                                            .read<LandLordLoginCubit>()
+                                            .landLordLogin(
+                                          formKey: context.read<LoginCubit>().formKey
+                                        );
+                                      },
+                                      child: Container(
+                                        width: double.infinity,
+                                        padding: EdgeInsets.all(12.r),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10.r),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.grey[300]!,
+                                              offset: const Offset(1, 2),
+                                              spreadRadius: 1,
+                                              blurRadius: 1,
+                                            )
+                                          ],
+                                        ),
+                                        child: Center(
+                                            child: landLordLoginButton(state)),
                                       ),
-                                    ),
-                                  ),
+                                    );
+                                  },
                                 ),
                               ),
                               SizedBox(height: 15.h),
@@ -223,9 +247,27 @@ class LoginScreen extends StatelessWidget {
       "Login",
       style: GoogleFonts.roboto(
         fontWeight: FontWeight.w500,
-        letterSpacing: 1,
+        letterSpacing: 0.5,
         fontSize: 16.sp,
         color: Colors.white,
+      ),
+    );
+  }
+
+  Widget landLordLoginButton(state) {
+    if (state.status == LoginStatus.authenticating) {
+      return CupertinoActivityIndicator(
+        radius: 12,
+        color: kPrimaryPurple,
+      );
+    }
+    return Text(
+      "Login as a LandLord",
+      style: GoogleFonts.roboto(
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.5,
+        fontSize: 16.sp,
+        color: kPrimaryPurple,
       ),
     );
   }

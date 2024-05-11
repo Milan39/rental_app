@@ -1,5 +1,8 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:ghar_bhada/auth/models/login_model.dart';
+import 'package:ghar_bhada/core/dio/api_client.dart';
 import 'package:logger/logger.dart';
 import '../models/error_modal.dart';
 import '../models/field_error_model.dart';
@@ -72,6 +75,33 @@ class AppInterceptor extends Interceptor {
           logger.w(err.response!.statusCode);
           logger.w(refreshToken);
 
+          if (err.response!.statusCode == 401 && refreshToken != null) {
+            RequestOptions origin = err.response!.requestOptions;
+
+            String? refreshToken = await _secureStorage.readRefreshToken();
+            Map refreshData = {"refresh": refreshToken};
+            await _secureStorage.removeRefreshToken();
+            try {
+              Response<dynamic> response =
+              await ApiClient().dio.post('v1/auth/login-refresh', data: refreshData);
+              if (response.statusCode == 200) {
+                LoginResponseModel loginResponseModel =
+                LoginResponseModel.fromJson(response.data);
+                _secureStorage.writeAccessToken(loginResponseModel.access);
+                _secureStorage.writeRefreshToken(loginResponseModel.refresh);
+                origin.headers['Authorization'] = 'JWT ${loginResponseModel.access}';
+                final newResponse = await ApiClient().dio.request(origin.path,
+                    data: origin.data,
+                    options: Options(
+                      headers: origin.headers,
+                      method: origin.method,
+                    ));
+                return handler.resolve(newResponse);
+              }
+            } catch (e) {
+              return handler.next(err);
+            }
+          } else {
             switch (err.response?.statusCode) {
               case 400:
                 super.onError(
@@ -88,14 +118,14 @@ class AppInterceptor extends Interceptor {
                 super.onError(NotFoundException(err.requestOptions), handler);
                 break;
               case 406:
-              // throw UnauthorizedException(err.requestOptions, err.response!);
+                // throw UnauthorizedException(err.requestOptions, err.response!);
                 super.onError(
                     UnauthorizedException(err.requestOptions, err.response!),
                     handler);
                 break;
-            // case 409:
-            //   super.onError(ConflictException(err.requestOptions), handler);
-            //   break;
+              // case 409:
+              //   super.onError(ConflictException(err.requestOptions), handler);
+              //   break;
 
               case 500:
                 super.onError(
@@ -108,7 +138,7 @@ class AppInterceptor extends Interceptor {
                     handler);
                 break;
             }
-
+          }
         case DioExceptionType.cancel:
           break;
         case DioExceptionType.badCertificate:
@@ -130,11 +160,13 @@ class BadRequestException extends DioException {
   String toString() {
     if (response!.data['errors'][0]['field'] == 'non_field_errors') {
       final errorMessage = ErrorModal.fromJson(response!.data);
-       return errorMessage.errors[0].message[0];
+      return errorMessage.errors[0].message[0];
     } else if (response!.data['errors'][0]['field'] == 'field_errors') {
-       final errorMessage = FieldErrorModal.fromJson(response!.data);
+      final errorMessage = FieldErrorModal.fromJson(response!.data);
       return errorMessage.errors[0].message.values.first;
     } else {
+      // final errorMessage = FieldErrorModal.fromJson(response!.data);
+      // return errorMessage.errors[0].message.values.first;
       final errorMessage = ErrorModal.fromJson(response!.data);
       return errorMessage.errors[0].message[0];
     }

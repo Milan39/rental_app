@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:ghar_bhada/auth/login/screen/login_screen.dart';
-import 'package:ghar_bhada/auth/login/screen/sing_up.dart';
-import 'package:ghar_bhada/home/screen/detail_screen.dart';
+import 'package:ghar_bhada/auth/screen/login_screen.dart';
+import 'package:ghar_bhada/auth/screen/sing_up.dart';
+import 'package:ghar_bhada/room_details/screen/room_detail_screen.dart';
 import 'package:ghar_bhada/home/screen/home_screen.dart';
 import 'package:ghar_bhada/landloard/property/screen/add_property_screen.dart';
 import 'package:ghar_bhada/landloard/property/screen/edit_profile_screen.dart';
@@ -68,7 +68,7 @@ class AppRoutes {
         name: 'details',
         path: '/details',
         pageBuilder: (context, state) => CustomTransitionPage(
-          child: const DetailScreen(),
+          child: const RoomDetailScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
             scale: animation,
