@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +45,7 @@ class DetailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: BlocProvider(
           create: (context) =>
-              sl<RoomDetailsCubit>()..fetchRoomDetails(roomId: roomId),
+          sl<RoomDetailsCubit>()..fetchRoomDetails(roomId: roomId),
           child: BlocBuilder<RoomDetailsCubit, RoomDetailsState>(
             builder: (context, state) {
               if (state is RoomDetailsLoaded) {
@@ -58,45 +59,111 @@ class DetailScreen extends StatelessWidget {
                         child: const CustomAppBar(title: "Details"),
                       ),
                       SizedBox(height: 5.h),
-                      Stack(
-                        children: [
-                          Image.network(
-                            state.roomDetails.displayImage,
-                            height: 130.h,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
-                          Positioned(
-                            top: 100.h,
-                            right: 15.w,
-                            child: Container(
-                              height: 20.h,
-                              width: 70.w,
-                              decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(20.r),
-                              ),
-                              alignment: Alignment.center,
-                              child: ListTile(
-                                visualDensity: const VisualDensity(
-                                    horizontal: 0, vertical: -4),
-                                dense: true,
-                                horizontalTitleGap: 0,
-                                minLeadingWidth: 25.w,
-                                contentPadding:
-                                    EdgeInsets.only(right: 0.r, left: 10.r),
-                                leading: const Icon(Icons.image),
-                                title: Text(
-                                  "1/${state.roomDetails.roomImage.length}",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(color: Colors.white),
+                      // CarouselSlider(
+                      //   options: CarouselOptions(height: 130.h),
+                      //   items: state.roomDetails.roomImage.map((roomDetails) {
+                      //     return Builder(
+                      //       builder: (BuildContext context) {
+                      //         return Stack(
+                      //           children: [
+                      //             Image.network(
+                      //               // state.roomDetails.displayImage,
+                      //               roomDetails.image,
+                      //               height: 130.h,
+                      //               width: double.infinity,
+                      //               fit: BoxFit.cover,
+                      //             ),
+                      //             Positioned(
+                      //               top: 100.h,
+                      //               right: 15.w,
+                      //               child: Container(
+                      //                 height: 20.h,
+                      //                 width: 70.w,
+                      //                 decoration: BoxDecoration(
+                      //                   color: Colors.black,
+                      //                   borderRadius:
+                      //                       BorderRadius.circular(20.r),
+                      //                 ),
+                      //                 alignment: Alignment.center,
+                      //                 child: ListTile(
+                      //                   visualDensity: const VisualDensity(
+                      //                       horizontal: 0, vertical: -4),
+                      //                   dense: true,
+                      //                   horizontalTitleGap: 0,
+                      //                   minLeadingWidth: 25.w,
+                      //                   contentPadding: EdgeInsets.only(
+                      //                       right: 0.r, left: 10.r),
+                      //                   leading: const Icon(Icons.image),
+                      //                   title: Text(
+                      //                     "1/${state.roomDetails.roomImage.length}",
+                      //                     style: Theme.of(context)
+                      //                         .textTheme
+                      //                         .bodyMedium!
+                      //                         .copyWith(color: Colors.white),
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //             )
+                      //           ],
+                      //         );
+                      //       },
+                      //     );
+                      //   }).toList(),
+                      // ),
+                      CarouselSlider.builder(
+                        itemCount: state.roomDetails.roomImage.length,
+                        itemBuilder: (BuildContext context, int itemIndex,
+                            int pageViewIndex) {
+                          final roomImages = state.roomDetails.roomImage;
+                          return Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10.r),
+                                child: Image.network(
+                                  roomImages[itemIndex].image,
+                                  height: 130.h,
+                                  width: double.infinity,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
-                            ),
-                          )
-                        ],
+                              Positioned(
+                                top: 100.h,
+                                right: 15.w,
+                                child: Container(
+                                  height: 20.h,
+                                  width: 70.w,
+                                  decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(20.r),
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: ListTile(
+                                    visualDensity: const VisualDensity(
+                                        horizontal: 0, vertical: -4),
+                                    dense: true,
+                                    horizontalTitleGap: 0,
+                                    minLeadingWidth: 25.w,
+                                    contentPadding:
+                                        EdgeInsets.only(right: 0.r, left: 10.r),
+                                    leading: const Icon(Icons.image),
+                                    title: Text(
+                                      "${itemIndex + 1}/${state.roomDetails.roomImage.length}",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          );
+                        },
+                        options: CarouselOptions(
+                          height: 130.h,
+                          enlargeCenterPage: true,
+                          autoPlay: true,
+                        ),
                       ),
                       SizedBox(height: 10.h),
                       Row(
@@ -138,7 +205,7 @@ class DetailScreen extends StatelessWidget {
                       ),
                       ListTile(
                         visualDensity:
-                            const VisualDensity(horizontal: 0, vertical: -4),
+                        const VisualDensity(horizontal: 0, vertical: -4),
                         dense: true,
                         horizontalTitleGap: 0,
                         minLeadingWidth: 20.w,
@@ -163,9 +230,9 @@ class DetailScreen extends StatelessWidget {
                         subtitle: Text(
                           "9846541456, 9847563410",
                           style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: Colors.grey,
-                                  ),
+                          Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: Colors.grey,
+                          ),
                         ),
                         leading: Container(
                           padding: EdgeInsets.symmetric(

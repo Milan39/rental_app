@@ -105,7 +105,7 @@ class HomeScreenTab extends StatelessWidget {
                             )
                           : Center(
                               child: Padding(
-                                padding: EdgeInsets.only(top: 150.h),
+                                padding: EdgeInsets.only(top: 100.h),
                                 child: CupertinoActivityIndicator(
                                   color: kPrimaryPurple,
                                   radius: 15.r,
