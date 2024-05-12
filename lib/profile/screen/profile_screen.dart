@@ -80,7 +80,9 @@ class ProfileScreen extends StatelessWidget {
                   height: 0.h,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed('payment-success');
+                  },
                   child: Container(
                     width: double.infinity,
                     margin:

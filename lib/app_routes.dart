@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ghar_bhada/auth/screen/login_screen.dart';
 import 'package:ghar_bhada/auth/screen/sing_up.dart';
+import 'package:ghar_bhada/room_details/screen/payment_success_screen.dart';
 import 'package:ghar_bhada/room_details/screen/room_detail_screen.dart';
 import 'package:ghar_bhada/home/screen/home_screen.dart';
 import 'package:ghar_bhada/landloard/property/screen/add_property_screen.dart';
@@ -105,6 +106,17 @@ class AppRoutes {
         path: '/support',
         pageBuilder: (context, state) => CustomTransitionPage(
           child: const SupportScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              ScaleTransition(
+            scale: animation,
+            child: child,
+          ),
+        ),
+      ),GoRoute(
+        name: 'payment-success',
+        path: '/payment-success',
+        pageBuilder: (context, state) => CustomTransitionPage(
+          child: const PaymentSuccessScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
             scale: animation,
