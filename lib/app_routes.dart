@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ghar_bhada/auth/screen/login_screen.dart';
 import 'package:ghar_bhada/auth/screen/sing_up.dart';
-import 'package:ghar_bhada/room_details/screen/payment_success_screen.dart';
-import 'package:ghar_bhada/room_details/screen/room_detail_screen.dart';
 import 'package:ghar_bhada/home/screen/home_screen.dart';
 import 'package:ghar_bhada/landloard/property/screen/add_property_screen.dart';
 import 'package:ghar_bhada/landloard/property/screen/edit_profile_screen.dart';
 import 'package:ghar_bhada/landloard/property/screen/support_screen.dart';
+import 'package:ghar_bhada/room_details/screen/booking_details_screen.dart';
+import 'package:ghar_bhada/room_details/screen/payment_success_screen.dart';
+import 'package:ghar_bhada/room_details/screen/room_detail_screen.dart';
 import 'package:ghar_bhada/splash/screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -117,6 +118,17 @@ class AppRoutes {
         path: '/payment-success',
         pageBuilder: (context, state) => CustomTransitionPage(
           child: const PaymentSuccessScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              ScaleTransition(
+            scale: animation,
+            child: child,
+          ),
+        ),
+      ),GoRoute(
+        name: 'booking-details',
+        path: '/booking-details',
+        pageBuilder: (context, state) => CustomTransitionPage(
+          child: const BookingDetailScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
             scale: animation,

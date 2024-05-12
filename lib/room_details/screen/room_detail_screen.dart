@@ -36,7 +36,8 @@ class RoomDetailScreen extends StatelessWidget {
           return Scaffold(
             bottomNavigationBar: InkWell(
               onTap: () {
-                context.read<BookingCubit>().bookRoom(roomId: roomId);
+                context.pushNamed('booking-details');
+                // context.read<BookingCubit>().bookRoom(roomId: roomId);
               },
               child: Container(
                 height: 25.h,

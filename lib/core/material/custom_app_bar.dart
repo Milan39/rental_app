@@ -35,7 +35,7 @@ class CustomAppBar extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: 100.w),
+        SizedBox(width: 75.w),
         Text(
           title,
           style: GoogleFonts.roboto(
