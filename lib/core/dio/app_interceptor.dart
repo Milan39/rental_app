@@ -31,6 +31,8 @@ class AppInterceptor extends Interceptor {
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     final accessToken = await getAccessToken();
+    print('accessToken');
+    print(accessToken);
     options.headers.addAll({
       'Authorization': 'JWT $accessToken',
       'Content-Type': 'application/json',
