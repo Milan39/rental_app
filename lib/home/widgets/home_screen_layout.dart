@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:ghar_bhada/core/constant.dart';
+import 'package:ghar_bhada/core/material/field_decorations.dart';
 import 'package:ghar_bhada/home/cubit/home_cubit/home_cubit.dart';
 import 'package:ghar_bhada/home/cubit/room_detail_cubit/home_room_cubit.dart';
 import 'package:ghar_bhada/home/model/home_room_model.dart';
@@ -12,8 +14,30 @@ import 'package:ghar_bhada/injection_container.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomeScreenTab extends StatelessWidget {
+class HomeScreenTab extends StatefulWidget {
   const HomeScreenTab({super.key});
+
+  @override
+  State<HomeScreenTab> createState() => _HomeScreenTabState();
+}
+
+class _HomeScreenTabState extends State<HomeScreenTab> {
+  bool isFiltered = false;
+
+  final List<String> location = [
+    'Kathmandu',
+    'Pokhara',
+    'Lumbini',
+    'Bhaktapur',
+    'Chitwan',
+    'Everest Base Camp',
+    'Annapurna Circuit',
+    'Nagarkot',
+    'Janakpur',
+    'Gosaikunda',
+    'Mustang',
+    'Rara Lake',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +66,14 @@ class HomeScreenTab extends StatelessWidget {
                       Text(
                         "Discover \nyour new apartment.",
                         style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          fontWeight: FontWeight.w500,
-                        ),
+                              fontWeight: FontWeight.w500,
+                            ),
                       ),
                       Container(
                         height: 25.h,
                         width: 45.w,
-                        padding: EdgeInsets.symmetric(vertical: 5.r, horizontal: 5.r),
+                        padding: EdgeInsets.symmetric(
+                            vertical: 5.r, horizontal: 5.r),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
@@ -70,15 +95,17 @@ class HomeScreenTab extends StatelessWidget {
                       SizedBox(width: 10.w),
                       GestureDetector(
                         onTap: () {
-                          // TODO
+                          setState(() {
+                            isFiltered = !isFiltered;
+                          });
                         },
                         child: Container(
-                          padding:
-                          EdgeInsets.symmetric(vertical: 10.r, horizontal: 10.r),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10.r, horizontal: 10.r),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.r),
-                            border:
-                            Border.all(color: kPrimaryPurple.withOpacity(0.2)),
+                            border: Border.all(
+                                color: kPrimaryPurple.withOpacity(0.2)),
                           ),
                           // alignment: Alignment.center,
                           child: SvgPicture.asset(
@@ -89,6 +116,97 @@ class HomeScreenTab extends StatelessWidget {
                       ),
                     ],
                   ),
+                  SizedBox(height: 5.h),
+                  isFiltered
+                      ? Container(
+                          padding: EdgeInsets.all(10.r),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.r),
+                            border: Border.all(
+                              color: kPrimaryPurple.withOpacity(0.5),
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Location",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                              SizedBox(height: 5.h),
+                              FormBuilderTextField(
+                                name: 'location',
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                keyboardType: TextInputType.emailAddress,
+                                style: Theme.of(context).textTheme.bodyLarge,
+                                cursorColor: kPrimaryPurple,
+                                decoration: textFieldDecoration(
+                                  hintText: 'search with location',
+                                ),
+                                validator: FormBuilderValidators.compose(
+                                  [
+                                    FormBuilderValidators.required(),
+                                    FormBuilderValidators.email(),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 5.h),
+                              Text("Price",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                              SizedBox(height: 5.h),
+                              Row(
+                                children: [
+                                  Container(
+                                    width: 60.w,
+                                    height: 20.h,
+                                    child: Center(
+                                      child: FormBuilderTextField(
+                                        name: 'min',
+                                        autovalidateMode:
+                                            AutovalidateMode.onUserInteraction,
+                                        keyboardType:
+                                            TextInputType.emailAddress,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge,
+                                        cursorColor: kPrimaryPurple,
+                                        decoration: const InputDecoration(
+                                            hintText: "   min"),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 20.w),
+                                  SizedBox(
+                                    width: 60.w,
+                                    child: FormBuilderTextField(
+                                      name: 'max',
+                                      autovalidateMode:
+                                          AutovalidateMode.onUserInteraction,
+                                      keyboardType: TextInputType.emailAddress,
+                                      style:
+                                          Theme.of(context).textTheme.bodyLarge,
+                                      cursorColor: kPrimaryPurple,
+                                      decoration: InputDecoration(
+                                        hintText: "   max",
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        )
+                      : const SizedBox.shrink(),
                   SizedBox(height: 10.h),
                   BlocBuilder<HomeRoomCubit, HomeRoomState>(
                     builder: (context, state) {
@@ -100,18 +218,18 @@ class HomeScreenTab extends StatelessWidget {
                                   return DetailsCard(
                                     rooms: state.rooms[index],
                                   );
-                                },
-                              ),
-                            )
+                          },
+                        ),
+                      )
                           : Center(
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 100.h),
-                                child: CupertinoActivityIndicator(
-                                  color: kPrimaryPurple,
-                                  radius: 15.r,
-                                ),
-                              ),
-                            );
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 100.h),
+                          child: CupertinoActivityIndicator(
+                            color: kPrimaryPurple,
+                            radius: 15.r,
+                          ),
+                        ),
+                      );
                     },
                   ),
                 ],
