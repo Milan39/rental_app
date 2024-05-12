@@ -21,4 +21,14 @@ class AuthRepository {
         .post("v1/auth/landloard-user/login", data: loginPayloadModel.toJson());
     return LoginResponseModel.fromJson(response.data);
   }
+
+  Future<String> registerUser({
+    required RegisterPayload registerPayload,
+  }) async {
+    final response = await apiClient.dio.post(
+      '/v1/auth/normal-user-register',
+      data: registerPayload.toJson(),
+    );
+    return response.data;
+  }
 }

@@ -47,15 +47,19 @@ class RoomDetailScreen extends StatelessWidget {
                   color: kPrimaryPurple,
                   borderRadius: BorderRadius.circular(10.r),
                 ),
-                child: Center(
-                  child: Text(
-                    'Rent Now',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(color: Colors.white),
-                  ),
-                ),
+                child: state is BookingLoading
+                    ? const Center(
+                        child: CupertinoActivityIndicator(),
+                      )
+                    : Center(
+                        child: Text(
+                          'Rent Now',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(color: Colors.white),
+                        ),
+                      ),
               ),
             ),
             body: SingleChildScrollView(

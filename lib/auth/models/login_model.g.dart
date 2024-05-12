@@ -55,3 +55,21 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
       'user_type': instance.userType,
       'is_first_login': instance.isFirstLogin,
     };
+
+_$RegisterPayloadImpl _$$RegisterPayloadImplFromJson(
+        Map<String, dynamic> json) =>
+    _$RegisterPayloadImpl(
+      phoneNumber: json['phone_number'] as String,
+      email: json['email'] as String,
+      fullName: json['fullname'] as String,
+      password: json['password'] as String,
+    );
+
+Map<String, dynamic> _$$RegisterPayloadImplToJson(
+        _$RegisterPayloadImpl instance) =>
+    <String, dynamic>{
+      'phone_number': instance.phoneNumber,
+      'email': instance.email,
+      'fullname': instance.fullName,
+      'password': instance.password,
+    };

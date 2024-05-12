@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:ghar_bhada/auth/cubit/lanloard_login/land_loard_login_state.dart';
+import 'package:ghar_bhada/auth/cubit/landlord/login/land_loard_login_state.dart';
 import 'package:ghar_bhada/auth/entities/auth_entity.dart';
 import 'package:ghar_bhada/auth/models/login_model.dart';
 import 'package:ghar_bhada/auth/repository/auth_repository.dart';
