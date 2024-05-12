@@ -85,32 +85,42 @@ class BookingDetailScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Appartment: "),
-                          Text("Lakeside"),
+                          Text(
+                            "Appartment: ",
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                          Text("Lakeside",
+                              style: Theme.of(context).textTheme.bodyMedium),
                         ],
                       ),
                       SizedBox(height: 5.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Amount Payment: "),
-                          Text("5000"),
+                          Text("Amount Payment: ",
+                              style: Theme.of(context).textTheme.bodyMedium),
+                          Text("Rs.5000",
+                              style: Theme.of(context).textTheme.bodyMedium),
                         ],
                       ),
                       SizedBox(height: 5.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Customer: "),
-                          Text("Lil Saaz"),
+                          Text("Customer: ",
+                              style: Theme.of(context).textTheme.bodyMedium),
+                          Text("Lil Saaz",
+                              style: Theme.of(context).textTheme.bodyMedium),
                         ],
                       ),
                       Divider(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Total Payment: "),
-                          Text("5000"),
+                          Text("Total Payment: ",
+                              style: Theme.of(context).textTheme.bodyMedium),
+                          Text("Rs.5000",
+                              style: Theme.of(context).textTheme.bodyMedium),
                         ],
                       ),
                     ],
