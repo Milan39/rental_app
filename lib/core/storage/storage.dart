@@ -58,7 +58,7 @@ class SecureStorage {
   Future<void> logoutUser() async {
     await _secureStorage.delete(key: 'user', aOptions: _getAndroidOptions());
     await _secureStorage.delete(
-        key: 'currentOrganizer', aOptions: _getAndroidOptions());
+        key: 'accessToken', aOptions: _getAndroidOptions());
   }
 
   Future<void> removeRefreshToken() async {
