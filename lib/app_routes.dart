@@ -1,19 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ghar_bhada/auth/screen/login_screen.dart';
 import 'package:ghar_bhada/auth/screen/sing_up.dart';
+import 'package:ghar_bhada/room_details/screen/payment_screen.dart';
+import 'package:ghar_bhada/room_details/screen/payment_success_screen.dart';
+import 'package:ghar_bhada/room_details/screen/room_detail_screen.dart';
 import 'package:ghar_bhada/home/screen/home_screen.dart';
 import 'package:ghar_bhada/landloard/property/screen/add_property_screen.dart';
 import 'package:ghar_bhada/landloard/property/screen/edit_profile_screen.dart';
 import 'package:ghar_bhada/landloard/property/screen/support_screen.dart';
-import 'package:ghar_bhada/room_details/screen/booking_details_screen.dart';
-import 'package:ghar_bhada/room_details/screen/payment_success_screen.dart';
-import 'package:ghar_bhada/room_details/screen/room_detail_screen.dart';
 import 'package:ghar_bhada/splash/screen/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRoutes {
   static final GlobalKey<NavigatorState> navigationKey =
-      GlobalKey<NavigatorState>();
+  GlobalKey<NavigatorState>();
   static final GoRouter router = GoRouter(
     navigatorKey: navigationKey,
     initialLocation: '/splash',
@@ -25,9 +25,9 @@ class AppRoutes {
           child: const SplashScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
-            scale: animation,
-            child: child,
-          ),
+                scale: animation,
+                child: child,
+              ),
         ),
       ),
       GoRoute(
@@ -37,9 +37,9 @@ class AppRoutes {
           child: const LoginScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
-            scale: animation,
-            child: child,
-          ),
+                scale: animation,
+                child: child,
+              ),
         ),
       ),
       GoRoute(
@@ -49,9 +49,9 @@ class AppRoutes {
           child: const SingUpScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
-            scale: animation,
-            child: child,
-          ),
+                scale: animation,
+                child: child,
+              ),
         ),
       ),
       GoRoute(
@@ -61,9 +61,9 @@ class AppRoutes {
           child: const HomeScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
-            scale: animation,
-            child: child,
-          ),
+                scale: animation,
+                child: child,
+              ),
         ),
       ),
       GoRoute(
@@ -73,9 +73,9 @@ class AppRoutes {
           child: const RoomDetailScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
-            scale: animation,
-            child: child,
-          ),
+                scale: animation,
+                child: child,
+              ),
         ),
       ),
       GoRoute(
@@ -85,9 +85,9 @@ class AppRoutes {
           child: const AddPropertyScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
-            scale: animation,
-            child: child,
-          ),
+                scale: animation,
+                child: child,
+              ),
         ),
       ),
       GoRoute(
@@ -97,9 +97,9 @@ class AppRoutes {
           child: const EditProfileScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
-            scale: animation,
-            child: child,
-          ),
+                scale: animation,
+                child: child,
+              ),
         ),
       ),
       GoRoute(
@@ -109,31 +109,33 @@ class AppRoutes {
           child: const SupportScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
-            scale: animation,
-            child: child,
-          ),
+                scale: animation,
+                child: child,
+              ),
         ),
-      ),GoRoute(
+      ),
+      GoRoute(
         name: 'payment-success',
         path: '/payment-success',
         pageBuilder: (context, state) => CustomTransitionPage(
           child: const PaymentSuccessScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
-            scale: animation,
-            child: child,
-          ),
+                scale: animation,
+                child: child,
+              ),
         ),
-      ),GoRoute(
-        name: 'booking-details',
-        path: '/booking-details',
+      ),
+      GoRoute(
+        name: 'payment',
+        path: '/payment',
         pageBuilder: (context, state) => CustomTransitionPage(
-          child: const BookingDetailScreen(),
+          child: PaymentScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               ScaleTransition(
-            scale: animation,
-            child: child,
-          ),
+                scale: animation,
+                child: child,
+              ),
         ),
       ),
     ],

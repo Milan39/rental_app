@@ -927,36 +927,34 @@ abstract class _BookingResponse implements BookingResponse {
       throw _privateConstructorUsedError;
 }
 
-PaymentCheckoutResponse _$PaymentCheckoutResponseFromJson(
-    Map<String, dynamic> json) {
-  return _PaymentCheckoutResponse.fromJson(json);
+KhaltiCheckoutModel _$KhaltiCheckoutModelFromJson(Map<String, dynamic> json) {
+  return _KhaltiCheckoutModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$PaymentCheckoutResponse {
-  String get token => throw _privateConstructorUsedError;
+mixin _$KhaltiCheckoutModel {
+  String get pidx => throw _privateConstructorUsedError;
   String get amount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PaymentCheckoutResponseCopyWith<PaymentCheckoutResponse> get copyWith =>
+  $KhaltiCheckoutModelCopyWith<KhaltiCheckoutModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PaymentCheckoutResponseCopyWith<$Res> {
-  factory $PaymentCheckoutResponseCopyWith(PaymentCheckoutResponse value,
-          $Res Function(PaymentCheckoutResponse) then) =
-      _$PaymentCheckoutResponseCopyWithImpl<$Res, PaymentCheckoutResponse>;
+abstract class $KhaltiCheckoutModelCopyWith<$Res> {
+  factory $KhaltiCheckoutModelCopyWith(
+          KhaltiCheckoutModel value, $Res Function(KhaltiCheckoutModel) then) =
+      _$KhaltiCheckoutModelCopyWithImpl<$Res, KhaltiCheckoutModel>;
   @useResult
-  $Res call({String token, String amount});
+  $Res call({String pidx, String amount});
 }
 
 /// @nodoc
-class _$PaymentCheckoutResponseCopyWithImpl<$Res,
-        $Val extends PaymentCheckoutResponse>
-    implements $PaymentCheckoutResponseCopyWith<$Res> {
-  _$PaymentCheckoutResponseCopyWithImpl(this._value, this._then);
+class _$KhaltiCheckoutModelCopyWithImpl<$Res, $Val extends KhaltiCheckoutModel>
+    implements $KhaltiCheckoutModelCopyWith<$Res> {
+  _$KhaltiCheckoutModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -966,13 +964,13 @@ class _$PaymentCheckoutResponseCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? token = null,
+    Object? pidx = null,
     Object? amount = null,
   }) {
     return _then(_value.copyWith(
-      token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
+      pidx: null == pidx
+          ? _value.pidx
+          : pidx // ignore: cast_nullable_to_non_nullable
               as String,
       amount: null == amount
           ? _value.amount
@@ -983,37 +981,34 @@ class _$PaymentCheckoutResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PaymentCheckoutResponseImplCopyWith<$Res>
-    implements $PaymentCheckoutResponseCopyWith<$Res> {
-  factory _$$PaymentCheckoutResponseImplCopyWith(
-          _$PaymentCheckoutResponseImpl value,
-          $Res Function(_$PaymentCheckoutResponseImpl) then) =
-      __$$PaymentCheckoutResponseImplCopyWithImpl<$Res>;
+abstract class _$$KhaltiCheckoutModelImplCopyWith<$Res>
+    implements $KhaltiCheckoutModelCopyWith<$Res> {
+  factory _$$KhaltiCheckoutModelImplCopyWith(_$KhaltiCheckoutModelImpl value,
+          $Res Function(_$KhaltiCheckoutModelImpl) then) =
+      __$$KhaltiCheckoutModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String token, String amount});
+  $Res call({String pidx, String amount});
 }
 
 /// @nodoc
-class __$$PaymentCheckoutResponseImplCopyWithImpl<$Res>
-    extends _$PaymentCheckoutResponseCopyWithImpl<$Res,
-        _$PaymentCheckoutResponseImpl>
-    implements _$$PaymentCheckoutResponseImplCopyWith<$Res> {
-  __$$PaymentCheckoutResponseImplCopyWithImpl(
-      _$PaymentCheckoutResponseImpl _value,
-      $Res Function(_$PaymentCheckoutResponseImpl) _then)
+class __$$KhaltiCheckoutModelImplCopyWithImpl<$Res>
+    extends _$KhaltiCheckoutModelCopyWithImpl<$Res, _$KhaltiCheckoutModelImpl>
+    implements _$$KhaltiCheckoutModelImplCopyWith<$Res> {
+  __$$KhaltiCheckoutModelImplCopyWithImpl(_$KhaltiCheckoutModelImpl _value,
+      $Res Function(_$KhaltiCheckoutModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? token = null,
+    Object? pidx = null,
     Object? amount = null,
   }) {
-    return _then(_$PaymentCheckoutResponseImpl(
-      token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
+    return _then(_$KhaltiCheckoutModelImpl(
+      pidx: null == pidx
+          ? _value.pidx
+          : pidx // ignore: cast_nullable_to_non_nullable
               as String,
       amount: null == amount
           ? _value.amount
@@ -1025,65 +1020,212 @@ class __$$PaymentCheckoutResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PaymentCheckoutResponseImpl implements _PaymentCheckoutResponse {
-  const _$PaymentCheckoutResponseImpl(
-      {required this.token, required this.amount});
+class _$KhaltiCheckoutModelImpl implements _KhaltiCheckoutModel {
+  const _$KhaltiCheckoutModelImpl({required this.pidx, required this.amount});
 
-  factory _$PaymentCheckoutResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PaymentCheckoutResponseImplFromJson(json);
+  factory _$KhaltiCheckoutModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KhaltiCheckoutModelImplFromJson(json);
 
   @override
-  final String token;
+  final String pidx;
   @override
   final String amount;
 
   @override
   String toString() {
-    return 'PaymentCheckoutResponse(token: $token, amount: $amount)';
+    return 'KhaltiCheckoutModel(pidx: $pidx, amount: $amount)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PaymentCheckoutResponseImpl &&
-            (identical(other.token, token) || other.token == token) &&
+            other is _$KhaltiCheckoutModelImpl &&
+            (identical(other.pidx, pidx) || other.pidx == pidx) &&
             (identical(other.amount, amount) || other.amount == amount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, token, amount);
+  int get hashCode => Object.hash(runtimeType, pidx, amount);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PaymentCheckoutResponseImplCopyWith<_$PaymentCheckoutResponseImpl>
-      get copyWith => __$$PaymentCheckoutResponseImplCopyWithImpl<
-          _$PaymentCheckoutResponseImpl>(this, _$identity);
+  _$$KhaltiCheckoutModelImplCopyWith<_$KhaltiCheckoutModelImpl> get copyWith =>
+      __$$KhaltiCheckoutModelImplCopyWithImpl<_$KhaltiCheckoutModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PaymentCheckoutResponseImplToJson(
+    return _$$KhaltiCheckoutModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _PaymentCheckoutResponse implements PaymentCheckoutResponse {
-  const factory _PaymentCheckoutResponse(
-      {required final String token,
-      required final String amount}) = _$PaymentCheckoutResponseImpl;
+abstract class _KhaltiCheckoutModel implements KhaltiCheckoutModel {
+  const factory _KhaltiCheckoutModel(
+      {required final String pidx,
+      required final String amount}) = _$KhaltiCheckoutModelImpl;
 
-  factory _PaymentCheckoutResponse.fromJson(Map<String, dynamic> json) =
-      _$PaymentCheckoutResponseImpl.fromJson;
+  factory _KhaltiCheckoutModel.fromJson(Map<String, dynamic> json) =
+      _$KhaltiCheckoutModelImpl.fromJson;
 
   @override
-  String get token;
+  String get pidx;
   @override
   String get amount;
   @override
   @JsonKey(ignore: true)
-  _$$PaymentCheckoutResponseImplCopyWith<_$PaymentCheckoutResponseImpl>
+  _$$KhaltiCheckoutModelImplCopyWith<_$KhaltiCheckoutModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+InitiateKhaltiResponseModel _$InitiateKhaltiResponseModelFromJson(
+    Map<String, dynamic> json) {
+  return _InitiateKhaltiResponseModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$InitiateKhaltiResponseModel {
+  String get pidx => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $InitiateKhaltiResponseModelCopyWith<InitiateKhaltiResponseModel>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InitiateKhaltiResponseModelCopyWith<$Res> {
+  factory $InitiateKhaltiResponseModelCopyWith(
+          InitiateKhaltiResponseModel value,
+          $Res Function(InitiateKhaltiResponseModel) then) =
+      _$InitiateKhaltiResponseModelCopyWithImpl<$Res,
+          InitiateKhaltiResponseModel>;
+  @useResult
+  $Res call({String pidx});
+}
+
+/// @nodoc
+class _$InitiateKhaltiResponseModelCopyWithImpl<$Res,
+        $Val extends InitiateKhaltiResponseModel>
+    implements $InitiateKhaltiResponseModelCopyWith<$Res> {
+  _$InitiateKhaltiResponseModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pidx = null,
+  }) {
+    return _then(_value.copyWith(
+      pidx: null == pidx
+          ? _value.pidx
+          : pidx // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$InitiateKhaltiResponseModelImplCopyWith<$Res>
+    implements $InitiateKhaltiResponseModelCopyWith<$Res> {
+  factory _$$InitiateKhaltiResponseModelImplCopyWith(
+          _$InitiateKhaltiResponseModelImpl value,
+          $Res Function(_$InitiateKhaltiResponseModelImpl) then) =
+      __$$InitiateKhaltiResponseModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String pidx});
+}
+
+/// @nodoc
+class __$$InitiateKhaltiResponseModelImplCopyWithImpl<$Res>
+    extends _$InitiateKhaltiResponseModelCopyWithImpl<$Res,
+        _$InitiateKhaltiResponseModelImpl>
+    implements _$$InitiateKhaltiResponseModelImplCopyWith<$Res> {
+  __$$InitiateKhaltiResponseModelImplCopyWithImpl(
+      _$InitiateKhaltiResponseModelImpl _value,
+      $Res Function(_$InitiateKhaltiResponseModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pidx = null,
+  }) {
+    return _then(_$InitiateKhaltiResponseModelImpl(
+      pidx: null == pidx
+          ? _value.pidx
+          : pidx // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$InitiateKhaltiResponseModelImpl
+    implements _InitiateKhaltiResponseModel {
+  const _$InitiateKhaltiResponseModelImpl({required this.pidx});
+
+  factory _$InitiateKhaltiResponseModelImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$InitiateKhaltiResponseModelImplFromJson(json);
+
+  @override
+  final String pidx;
+
+  @override
+  String toString() {
+    return 'InitiateKhaltiResponseModel(pidx: $pidx)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InitiateKhaltiResponseModelImpl &&
+            (identical(other.pidx, pidx) || other.pidx == pidx));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, pidx);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitiateKhaltiResponseModelImplCopyWith<_$InitiateKhaltiResponseModelImpl>
+      get copyWith => __$$InitiateKhaltiResponseModelImplCopyWithImpl<
+          _$InitiateKhaltiResponseModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$InitiateKhaltiResponseModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _InitiateKhaltiResponseModel
+    implements InitiateKhaltiResponseModel {
+  const factory _InitiateKhaltiResponseModel({required final String pidx}) =
+      _$InitiateKhaltiResponseModelImpl;
+
+  factory _InitiateKhaltiResponseModel.fromJson(Map<String, dynamic> json) =
+      _$InitiateKhaltiResponseModelImpl.fromJson;
+
+  @override
+  String get pidx;
+  @override
+  @JsonKey(ignore: true)
+  _$$InitiateKhaltiResponseModelImplCopyWith<_$InitiateKhaltiResponseModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

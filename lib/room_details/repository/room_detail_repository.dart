@@ -19,19 +19,4 @@ class RoomRepository {
     });
     return BookingResponse.fromJson(response.data);
   }
-
-  Future<String> payment({required String bookingId}) async {
-    Response response = await apiClient.dio
-        .get('v1/payment/booking/$bookingId/khalti-initiate');
-
-    return response.data;
-  }
-
-  Future<PaymentCheckoutResponse> paymentCheckOut({
-    required String bookingId,
-  }) async {
-    Response response = await apiClient.dio
-        .get('v1/payment/booking/$bookingId/khalti-checkout');
-    return PaymentCheckoutResponse.fromJson(response.data);
-  }
 }

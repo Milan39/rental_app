@@ -81,16 +81,28 @@ Map<String, dynamic> _$$BookingResponseImplToJson(
       'normal_user': instance.normalUser,
     };
 
-_$PaymentCheckoutResponseImpl _$$PaymentCheckoutResponseImplFromJson(
+_$KhaltiCheckoutModelImpl _$$KhaltiCheckoutModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$PaymentCheckoutResponseImpl(
-      token: json['token'] as String,
+    _$KhaltiCheckoutModelImpl(
+      pidx: json['pidx'] as String,
       amount: json['amount'] as String,
     );
 
-Map<String, dynamic> _$$PaymentCheckoutResponseImplToJson(
-        _$PaymentCheckoutResponseImpl instance) =>
+Map<String, dynamic> _$$KhaltiCheckoutModelImplToJson(
+        _$KhaltiCheckoutModelImpl instance) =>
     <String, dynamic>{
-      'token': instance.token,
+      'pidx': instance.pidx,
       'amount': instance.amount,
+    };
+
+_$InitiateKhaltiResponseModelImpl _$$InitiateKhaltiResponseModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$InitiateKhaltiResponseModelImpl(
+      pidx: json['pidx'] as String,
+    );
+
+Map<String, dynamic> _$$InitiateKhaltiResponseModelImplToJson(
+        _$InitiateKhaltiResponseModelImpl instance) =>
+    <String, dynamic>{
+      'pidx': instance.pidx,
     };

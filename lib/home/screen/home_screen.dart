@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ghar_bhada/core/constant.dart';
 import 'package:ghar_bhada/home/cubit/bottom_nav_bar_cubit/bottom_nav_bar_cubit.dart';
 import 'package:ghar_bhada/home/cubit/home_cubit/home_cubit.dart';
+import 'package:ghar_bhada/home/cubit/room_detail_cubit/home_room_cubit.dart';
 import 'package:ghar_bhada/home/widgets/home_screen_layout.dart';
 import 'package:ghar_bhada/injection_container.dart';
 import 'package:ghar_bhada/profile/screen/profile_screen.dart';
@@ -35,8 +36,13 @@ class HomeScreen extends StatelessWidget {
                 floatingActionButton: user == "normal_user"
                     ? const SizedBox.shrink()
                     : FloatingActionButton(
-                        onPressed: () {
-                          context.pushNamed('add-property');
+                        onPressed: () async {
+                          Object? reload = await context.pushNamed(
+                            'add-property',
+                          );
+                          if (reload != null && context.mounted) {
+                            context.read<HomeRoomCubit>().fetchRoomDetails();
+                          }
                         },
                         shape: const CircleBorder(),
                         backgroundColor: kPrimaryPurple,

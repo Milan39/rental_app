@@ -23,6 +23,10 @@ mixin _$HomeRoomModel {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'street_location')
   String get streetLocation => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_active')
+  bool? get isActive => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_published')
+  bool? get isPublished => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   String get price => throw _privateConstructorUsedError;
   @JsonKey(name: 'display_image')
@@ -43,6 +47,8 @@ abstract class $HomeRoomModelCopyWith<$Res> {
   $Res call(
       {String id,
       @JsonKey(name: 'street_location') String streetLocation,
+      @JsonKey(name: 'is_active') bool? isActive,
+      @JsonKey(name: 'is_published') bool? isPublished,
       String city,
       String price,
       @JsonKey(name: 'display_image') String displayImage});
@@ -63,6 +69,8 @@ class _$HomeRoomModelCopyWithImpl<$Res, $Val extends HomeRoomModel>
   $Res call({
     Object? id = null,
     Object? streetLocation = null,
+    Object? isActive = freezed,
+    Object? isPublished = freezed,
     Object? city = null,
     Object? price = null,
     Object? displayImage = null,
@@ -76,6 +84,14 @@ class _$HomeRoomModelCopyWithImpl<$Res, $Val extends HomeRoomModel>
           ? _value.streetLocation
           : streetLocation // ignore: cast_nullable_to_non_nullable
               as String,
+      isActive: freezed == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isPublished: freezed == isPublished
+          ? _value.isPublished
+          : isPublished // ignore: cast_nullable_to_non_nullable
+              as bool?,
       city: null == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
@@ -103,6 +119,8 @@ abstract class _$$HomeRoomModelImplCopyWith<$Res>
   $Res call(
       {String id,
       @JsonKey(name: 'street_location') String streetLocation,
+      @JsonKey(name: 'is_active') bool? isActive,
+      @JsonKey(name: 'is_published') bool? isPublished,
       String city,
       String price,
       @JsonKey(name: 'display_image') String displayImage});
@@ -121,6 +139,8 @@ class __$$HomeRoomModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? streetLocation = null,
+    Object? isActive = freezed,
+    Object? isPublished = freezed,
     Object? city = null,
     Object? price = null,
     Object? displayImage = null,
@@ -134,6 +154,14 @@ class __$$HomeRoomModelImplCopyWithImpl<$Res>
           ? _value.streetLocation
           : streetLocation // ignore: cast_nullable_to_non_nullable
               as String,
+      isActive: freezed == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isPublished: freezed == isPublished
+          ? _value.isPublished
+          : isPublished // ignore: cast_nullable_to_non_nullable
+              as bool?,
       city: null == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
@@ -156,6 +184,8 @@ class _$HomeRoomModelImpl implements _HomeRoomModel {
   const _$HomeRoomModelImpl(
       {required this.id,
       @JsonKey(name: 'street_location') required this.streetLocation,
+      @JsonKey(name: 'is_active') this.isActive,
+      @JsonKey(name: 'is_published') this.isPublished,
       required this.city,
       required this.price,
       @JsonKey(name: 'display_image') required this.displayImage});
@@ -169,6 +199,12 @@ class _$HomeRoomModelImpl implements _HomeRoomModel {
   @JsonKey(name: 'street_location')
   final String streetLocation;
   @override
+  @JsonKey(name: 'is_active')
+  final bool? isActive;
+  @override
+  @JsonKey(name: 'is_published')
+  final bool? isPublished;
+  @override
   final String city;
   @override
   final String price;
@@ -178,7 +214,7 @@ class _$HomeRoomModelImpl implements _HomeRoomModel {
 
   @override
   String toString() {
-    return 'HomeRoomModel(id: $id, streetLocation: $streetLocation, city: $city, price: $price, displayImage: $displayImage)';
+    return 'HomeRoomModel(id: $id, streetLocation: $streetLocation, isActive: $isActive, isPublished: $isPublished, city: $city, price: $price, displayImage: $displayImage)';
   }
 
   @override
@@ -189,6 +225,10 @@ class _$HomeRoomModelImpl implements _HomeRoomModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.streetLocation, streetLocation) ||
                 other.streetLocation == streetLocation) &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive) &&
+            (identical(other.isPublished, isPublished) ||
+                other.isPublished == isPublished) &&
             (identical(other.city, city) || other.city == city) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.displayImage, displayImage) ||
@@ -197,8 +237,8 @@ class _$HomeRoomModelImpl implements _HomeRoomModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, streetLocation, city, price, displayImage);
+  int get hashCode => Object.hash(runtimeType, id, streetLocation, isActive,
+      isPublished, city, price, displayImage);
 
   @JsonKey(ignore: true)
   @override
@@ -218,6 +258,8 @@ abstract class _HomeRoomModel implements HomeRoomModel {
   const factory _HomeRoomModel(
       {required final String id,
       @JsonKey(name: 'street_location') required final String streetLocation,
+      @JsonKey(name: 'is_active') final bool? isActive,
+      @JsonKey(name: 'is_published') final bool? isPublished,
       required final String city,
       required final String price,
       @JsonKey(name: 'display_image')
@@ -231,6 +273,12 @@ abstract class _HomeRoomModel implements HomeRoomModel {
   @override
   @JsonKey(name: 'street_location')
   String get streetLocation;
+  @override
+  @JsonKey(name: 'is_active')
+  bool? get isActive;
+  @override
+  @JsonKey(name: 'is_published')
+  bool? get isPublished;
   @override
   String get city;
   @override

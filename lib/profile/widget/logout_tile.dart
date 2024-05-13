@@ -63,9 +63,11 @@ class LogoutTile extends StatelessWidget {
                               builder: (context, state) {
                                 return CustomLogOutButton(
                                   buttonName: "Logout",
-                                  onTap: () {
-                                    context.read<LogoutCubit>().logoutUser();
-                                    context.pop();
+                                  onTap: () async {
+                                    await context.read<LogoutCubit>().logoutUser();
+                                    if(context.mounted) {
+                                      context.pushNamed('login');
+                                    }
                                   },
                                   isLogout: true,
                                 );

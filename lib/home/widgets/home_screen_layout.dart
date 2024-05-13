@@ -11,6 +11,7 @@ import 'package:ghar_bhada/home/cubit/home_cubit/home_cubit.dart';
 import 'package:ghar_bhada/home/cubit/room_detail_cubit/home_room_cubit.dart';
 import 'package:ghar_bhada/home/model/home_room_model.dart';
 import 'package:ghar_bhada/injection_container.dart';
+import 'package:ghar_bhada/room_details/model/room_detail_model.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -52,187 +53,206 @@ class _HomeScreenTabState extends State<HomeScreenTab> {
       ],
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
-          return SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 10.r),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 10.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Discover \nyour new apartment.",
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              fontWeight: FontWeight.w500,
-                            ),
-                      ),
-                      Container(
-                        height: 25.h,
-                        width: 45.w,
-                        padding: EdgeInsets.symmetric(
-                            vertical: 5.r, horizontal: 5.r),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                              color: kPrimaryPurple.withOpacity(0.2)),
-                          image: DecorationImage(
-                            image: NetworkImage(state.avatar),
-                            fit: BoxFit.cover,
-                          ),
+          return RefreshIndicator(
+            edgeOffset: 50,
+            color: kPrimaryRed,
+            triggerMode: RefreshIndicatorTriggerMode.anywhere,
+            backgroundColor: kSecondaryBlack,
+            onRefresh: () async {
+              context.read<HomeRoomCubit>().fetchRoomDetails();
+            },
+            child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 10.r),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Discover \nyour new apartment.",
+                          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                                fontWeight: FontWeight.w500,
+                              ),
                         ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 10.h),
-                  Row(
-                    children: [
-                      const Expanded(
-                        child: SearchBar(),
-                      ),
-                      SizedBox(width: 10.w),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isFiltered = !isFiltered;
-                          });
-                        },
-                        child: Container(
+                        Container(
+                          height: 25.h,
+                          width: 45.w,
                           padding: EdgeInsets.symmetric(
-                              vertical: 10.r, horizontal: 10.r),
+                              vertical: 5.r, horizontal: 5.r),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.r),
+                            shape: BoxShape.circle,
                             border: Border.all(
                                 color: kPrimaryPurple.withOpacity(0.2)),
-                          ),
-                          // alignment: Alignment.center,
-                          child: SvgPicture.asset(
-                            'assets/icons/filter.svg',
-                            height: 10.h,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 5.h),
-                  isFiltered
-                      ? Container(
-                          padding: EdgeInsets.all(10.r),
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.r),
-                            border: Border.all(
-                              color: kPrimaryPurple.withOpacity(0.5),
+                            image: DecorationImage(
+                              image: NetworkImage(state.avatar),
+                              fit: BoxFit.cover,
                             ),
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Location",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(
-                                        fontWeight: FontWeight.bold,
-                                      )),
-                              SizedBox(height: 5.h),
-                              FormBuilderTextField(
-                                name: 'location',
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                keyboardType: TextInputType.emailAddress,
-                                style: Theme.of(context).textTheme.bodyLarge,
-                                cursorColor: kPrimaryPurple,
-                                decoration: textFieldDecoration(
-                                  hintText: 'search with location',
-                                ),
-                                validator: FormBuilderValidators.compose(
-                                  [
-                                    FormBuilderValidators.required(),
-                                    FormBuilderValidators.email(),
-                                  ],
-                                ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 10.h),
+                    Row(
+                      children: [
+                        const Expanded(
+                          child: SearchBar(),
+                        ),
+                        SizedBox(width: 10.w),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isFiltered = !isFiltered;
+                            });
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10.r, horizontal: 10.r),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.r),
+                              border: Border.all(
+                                  color: kPrimaryPurple.withOpacity(0.2)),
+                            ),
+                            // alignment: Alignment.center,
+                            child: SvgPicture.asset(
+                              'assets/icons/filter.svg',
+                              height: 10.h,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 5.h),
+                    isFiltered
+                        ? Container(
+                            padding: EdgeInsets.all(10.r),
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.r),
+                              border: Border.all(
+                                color: kPrimaryPurple.withOpacity(0.5),
                               ),
-                              SizedBox(height: 5.h),
-                              Text("Price",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(
-                                        fontWeight: FontWeight.bold,
-                                      )),
-                              SizedBox(height: 5.h),
-                              Row(
-                                children: [
-                                  Container(
-                                    width: 60.w,
-                                    height: 20.h,
-                                    child: Center(
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Location",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                SizedBox(height: 5.h),
+                                FormBuilderTextField(
+                                  name: 'location',
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  keyboardType: TextInputType.emailAddress,
+                                  style: Theme.of(context).textTheme.bodyLarge,
+                                  cursorColor: kPrimaryPurple,
+                                  decoration: textFieldDecoration(
+                                    hintText: 'search with location',
+                                  ),
+                                  validator: FormBuilderValidators.compose(
+                                    [
+                                      FormBuilderValidators.required(),
+                                      FormBuilderValidators.email(),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 5.h),
+                                Text("Price",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                SizedBox(height: 5.h),
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: 60.w,
+                                      height: 20.h,
+                                      child: Center(
+                                        child: FormBuilderTextField(
+                                          name: 'min',
+                                          autovalidateMode:
+                                              AutovalidateMode.onUserInteraction,
+                                          keyboardType:
+                                              TextInputType.emailAddress,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge,
+                                          cursorColor: kPrimaryPurple,
+                                          decoration: const InputDecoration(
+                                              hintText: "   min"),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: 20.w),
+                                    SizedBox(
+                                      width: 60.w,
                                       child: FormBuilderTextField(
-                                        name: 'min',
+                                        name: 'max',
                                         autovalidateMode:
                                             AutovalidateMode.onUserInteraction,
-                                        keyboardType:
-                                            TextInputType.emailAddress,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge,
+                                        keyboardType: TextInputType.emailAddress,
+                                        style:
+                                            Theme.of(context).textTheme.bodyLarge,
                                         cursorColor: kPrimaryPurple,
-                                        decoration: const InputDecoration(
-                                            hintText: "   min"),
+                                        decoration: InputDecoration(
+                                          hintText: "   max",
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(width: 20.w),
-                                  SizedBox(
-                                    width: 60.w,
-                                    child: FormBuilderTextField(
-                                      name: 'max',
-                                      autovalidateMode:
-                                          AutovalidateMode.onUserInteraction,
-                                      keyboardType: TextInputType.emailAddress,
-                                      style:
-                                          Theme.of(context).textTheme.bodyLarge,
-                                      cursorColor: kPrimaryPurple,
-                                      decoration: InputDecoration(
-                                        hintText: "   max",
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        )
-                      : const SizedBox.shrink(),
-                  SizedBox(height: 10.h),
-                  BlocBuilder<HomeRoomCubit, HomeRoomState>(
-                    builder: (context, state) {
-                      return state is HomeRoomLoaded
-                          ? Column(
+                                  ],
+                                )
+                              ],
+                            ),
+                          )
+                        : const SizedBox.shrink(),
+                    SizedBox(height: 10.h),
+                    BlocBuilder<HomeRoomCubit, HomeRoomState>(
+                      builder: (context, state) {
+                        if (state is HomeRoomLoaded) {
+                            return Column(
                               children: List.generate(
                                 state.rooms.length,
-                                (index) {
+                                    (index) {
                                   return DetailsCard(
                                     rooms: state.rooms[index],
                                   );
-                          },
-                        ),
-                      )
-                          : Center(
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 100.h),
-                          child: CupertinoActivityIndicator(
-                            color: kPrimaryPurple,
-                            radius: 15.r,
+                                },
+                              ),
+                            );
+                          } else if (state is SearchNotFound) {
+                            return Center(
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 100.h),
+                                child: const Text(
+                                  'No Apartment Available'
+                                )
+                              ),
+                            );
+                          }
+                        return Center(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 100.h),
+                            child: CupertinoActivityIndicator(
+                              color: kPrimaryPurple,
+                              radius: 15.r,
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  ),
-                ],
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           );
@@ -296,10 +316,7 @@ class DetailsCard extends StatelessWidget {
             SizedBox(height: 10.h),
             Padding(
               padding: EdgeInsets.only(left: 15.r),
-              child: Text(
-                rooms.streetLocation,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
+              child: RoomTitle(room: rooms,),
             ),
             ListTile(
               visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
@@ -351,6 +368,33 @@ class DetailsCard extends StatelessWidget {
     );
   }
 }
+
+class RoomTitle extends StatelessWidget {
+  final HomeRoomModel room;
+  const RoomTitle({super.key, required this.room});
+
+  @override
+  Widget build(BuildContext context) {
+    if (room.isActive == null) {
+      return Text(
+        room.streetLocation,
+        style: Theme.of(context).textTheme.titleMedium,
+      );
+    } else {
+      if (room.isActive == false) {
+        return Text(
+          "${room.streetLocation} - Rented",
+          style: Theme.of(context).textTheme.titleMedium,
+        );
+      }
+      return Text(
+        room.streetLocation,
+        style: Theme.of(context).textTheme.titleMedium,
+      );
+    }
+  }
+}
+
 
 class SearchBar extends StatelessWidget {
   const SearchBar({super.key});

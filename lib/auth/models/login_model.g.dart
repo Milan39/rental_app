@@ -73,3 +73,19 @@ Map<String, dynamic> _$$RegisterPayloadImplToJson(
       'fullname': instance.fullName,
       'password': instance.password,
     };
+
+_$RegisterResponseImpl _$$RegisterResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$RegisterResponseImpl(
+      phoneNumber: json['phone_number'] as String,
+      email: json['email'] as String,
+      fullName: json['fullname'] as String,
+    );
+
+Map<String, dynamic> _$$RegisterResponseImplToJson(
+        _$RegisterResponseImpl instance) =>
+    <String, dynamic>{
+      'phone_number': instance.phoneNumber,
+      'email': instance.email,
+      'fullname': instance.fullName,
+    };

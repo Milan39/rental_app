@@ -25,7 +25,7 @@ class SingUpScreen extends StatelessWidget {
           if (state is RegisterSuccess) {
             Helpers.showToastMessage(
               context,
-              message: state.registerResponse,
+              message: 'Registered successfully',
               isError: false,
             );
             context.pop();

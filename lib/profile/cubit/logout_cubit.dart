@@ -16,6 +16,5 @@ class LogoutCubit extends Cubit<LogoutState> {
   Future<void> logoutUser() async {
     emit(LogoutState.inProcess);
       await secureStorage.logoutUser();
-      emit(LogoutState.success);
   }
 }

@@ -8,7 +8,9 @@ import 'package:ghar_bhada/landloard/property/cubit/add_room/add_room_cubit.dart
 import 'package:ghar_bhada/landloard/repository/landLord_repository.dart';
 import 'package:ghar_bhada/profile/cubit/logout_cubit.dart';
 import 'package:ghar_bhada/room_details/cubit/booking/booking_cubit.dart';
+import 'package:ghar_bhada/room_details/cubit/khalti/khalti_cubit.dart';
 import 'package:ghar_bhada/room_details/cubit/room_details/room_details_cubit.dart';
+import 'package:ghar_bhada/room_details/repository/khalti_repository.dart';
 import 'package:ghar_bhada/room_details/repository/room_detail_repository.dart';
 import 'package:ghar_bhada/splash/cubit/splash_cubit.dart';
 
@@ -31,17 +33,19 @@ Future<void> init() async {
   sl.registerFactory(() => HomeCubit(secureStorage: sl()));
   sl.registerFactory(
       () => HomeRoomCubit(repository: sl(), secureStorage: sl()));
-  sl.registerFactory(() => RoomDetailsCubit(repository: sl()));
+  sl.registerFactory(() => RoomDetailsCubit(secureStorage: sl(),repository: sl()));
   sl.registerFactory(() => LogoutCubit(secureStorage: sl()));
   sl.registerFactory(() => BookingCubit(repository: sl()));
   sl.registerFactory(() => RegisterCubit(repository: sl()));
   sl.registerFactory(() => AddRoomCubit(repository: sl()));
+  sl.registerFactory(() => KhaltiCubit(repository: sl()));
 
   // Repository
   sl.registerLazySingleton(() => AuthRepository(apiClient: sl()));
   sl.registerLazySingleton(() => HomeRepository(apiClient: sl()));
   sl.registerLazySingleton(() => RoomRepository(apiClient: sl()));
   sl.registerLazySingleton(() => LandLordRepository(apiClient: sl()));
+  sl.registerLazySingleton(() => KhaltiRepository(apiClient: sl()));
 
   //! External
   sl.registerLazySingleton(() => ApiClient());

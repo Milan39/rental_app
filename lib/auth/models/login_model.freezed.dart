@@ -821,3 +821,193 @@ abstract class _RegisterPayload implements RegisterPayload {
   _$$RegisterPayloadImplCopyWith<_$RegisterPayloadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+RegisterResponse _$RegisterResponseFromJson(Map<String, dynamic> json) {
+  return _RegisterResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$RegisterResponse {
+  @JsonKey(name: "phone_number")
+  String get phoneNumber => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  @JsonKey(name: "fullname")
+  String get fullName => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $RegisterResponseCopyWith<RegisterResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RegisterResponseCopyWith<$Res> {
+  factory $RegisterResponseCopyWith(
+          RegisterResponse value, $Res Function(RegisterResponse) then) =
+      _$RegisterResponseCopyWithImpl<$Res, RegisterResponse>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "phone_number") String phoneNumber,
+      String email,
+      @JsonKey(name: "fullname") String fullName});
+}
+
+/// @nodoc
+class _$RegisterResponseCopyWithImpl<$Res, $Val extends RegisterResponse>
+    implements $RegisterResponseCopyWith<$Res> {
+  _$RegisterResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phoneNumber = null,
+    Object? email = null,
+    Object? fullName = null,
+  }) {
+    return _then(_value.copyWith(
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$RegisterResponseImplCopyWith<$Res>
+    implements $RegisterResponseCopyWith<$Res> {
+  factory _$$RegisterResponseImplCopyWith(_$RegisterResponseImpl value,
+          $Res Function(_$RegisterResponseImpl) then) =
+      __$$RegisterResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "phone_number") String phoneNumber,
+      String email,
+      @JsonKey(name: "fullname") String fullName});
+}
+
+/// @nodoc
+class __$$RegisterResponseImplCopyWithImpl<$Res>
+    extends _$RegisterResponseCopyWithImpl<$Res, _$RegisterResponseImpl>
+    implements _$$RegisterResponseImplCopyWith<$Res> {
+  __$$RegisterResponseImplCopyWithImpl(_$RegisterResponseImpl _value,
+      $Res Function(_$RegisterResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phoneNumber = null,
+    Object? email = null,
+    Object? fullName = null,
+  }) {
+    return _then(_$RegisterResponseImpl(
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$RegisterResponseImpl implements _RegisterResponse {
+  const _$RegisterResponseImpl(
+      {@JsonKey(name: "phone_number") required this.phoneNumber,
+      required this.email,
+      @JsonKey(name: "fullname") required this.fullName});
+
+  factory _$RegisterResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RegisterResponseImplFromJson(json);
+
+  @override
+  @JsonKey(name: "phone_number")
+  final String phoneNumber;
+  @override
+  final String email;
+  @override
+  @JsonKey(name: "fullname")
+  final String fullName;
+
+  @override
+  String toString() {
+    return 'RegisterResponse(phoneNumber: $phoneNumber, email: $email, fullName: $fullName)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RegisterResponseImpl &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, phoneNumber, email, fullName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RegisterResponseImplCopyWith<_$RegisterResponseImpl> get copyWith =>
+      __$$RegisterResponseImplCopyWithImpl<_$RegisterResponseImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RegisterResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _RegisterResponse implements RegisterResponse {
+  const factory _RegisterResponse(
+          {@JsonKey(name: "phone_number") required final String phoneNumber,
+          required final String email,
+          @JsonKey(name: "fullname") required final String fullName}) =
+      _$RegisterResponseImpl;
+
+  factory _RegisterResponse.fromJson(Map<String, dynamic> json) =
+      _$RegisterResponseImpl.fromJson;
+
+  @override
+  @JsonKey(name: "phone_number")
+  String get phoneNumber;
+  @override
+  String get email;
+  @override
+  @JsonKey(name: "fullname")
+  String get fullName;
+  @override
+  @JsonKey(ignore: true)
+  _$$RegisterResponseImplCopyWith<_$RegisterResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

@@ -10,7 +10,7 @@ class RegisterState extends Equatable {
 class RegisterLoading extends RegisterState {}
 
 class RegisterSuccess extends RegisterState {
-  final String registerResponse;
+  final RegisterResponse registerResponse;
 
   const RegisterSuccess({required this.registerResponse});
 

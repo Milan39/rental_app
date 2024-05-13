@@ -208,7 +208,7 @@ class LoginScreen extends StatelessWidget {
                                       ),
                                       children: [
                                         TextSpan(
-                                          text: "Sign in",
+                                          text: "Sign Up",
                                           style: GoogleFonts.roboto(
                                             fontWeight: FontWeight.w600,
                                             letterSpacing: 0.6,

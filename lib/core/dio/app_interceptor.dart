@@ -31,12 +31,17 @@ class AppInterceptor extends Interceptor {
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     final accessToken = await getAccessToken();
-    print('accessToken');
-    print(accessToken);
-    options.headers.addAll({
-      'Authorization': 'JWT $accessToken',
-      'Content-Type': 'application/json',
-    });
+    if (accessToken !=null) {
+      options.headers.addAll({
+        'Authorization': 'JWT $accessToken',
+        'Content-Type': 'application/json',
+      });
+    } else {
+      options.headers.addAll({
+        'Content-Type': 'application/json',
+      });
+    }
+
     return handler.next(options);
   }
 

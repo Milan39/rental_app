@@ -9,6 +9,8 @@ class HomeRoomModel with _$HomeRoomModel {
   const factory HomeRoomModel({
     required String id,
     @JsonKey(name: 'street_location') required String streetLocation,
+    @JsonKey(name: 'is_active')  bool? isActive,
+    @JsonKey(name: 'is_published')  bool? isPublished,
     required String city,
     required String price,
     @JsonKey(name: 'display_image') required String displayImage,

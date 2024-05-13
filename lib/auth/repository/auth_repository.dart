@@ -22,13 +22,13 @@ class AuthRepository {
     return LoginResponseModel.fromJson(response.data);
   }
 
-  Future<String> registerUser({
+  Future<RegisterResponse> registerUser({
     required RegisterPayload registerPayload,
   }) async {
     final response = await apiClient.dio.post(
       '/v1/auth/normal-user-register',
       data: registerPayload.toJson(),
     );
-    return response.data;
+    return RegisterResponse.fromJson(response.data);
   }
 }

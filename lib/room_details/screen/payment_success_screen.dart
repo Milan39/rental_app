@@ -66,7 +66,7 @@ class PaymentSuccessScreen extends StatelessWidget {
                           ),
                     ),
                     Text(
-                      "We sent an email to orders@abc.com with your order confirmation.",
+                      "Your booking has been confirmed",
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontWeight: FontWeight.w400,

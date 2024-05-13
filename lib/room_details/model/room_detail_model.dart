@@ -60,13 +60,23 @@ class BookingResponse with _$BookingResponse {
 }
 
 @freezed
-class PaymentCheckoutResponse with _$PaymentCheckoutResponse {
-  const factory PaymentCheckoutResponse({
-    required String token,
+class KhaltiCheckoutModel with _$KhaltiCheckoutModel {
+  const factory KhaltiCheckoutModel({
+    required String pidx,
     required String amount,
-  }) = _PaymentCheckoutResponse;
+  }) = _KhaltiCheckoutModel;
 
   @freezed
-  factory PaymentCheckoutResponse.fromJson(Map<String, Object?> json) =>
-      _$PaymentCheckoutResponseFromJson(json);
+  factory KhaltiCheckoutModel.fromJson(Map<String, Object?> json) =>
+      _$KhaltiCheckoutModelFromJson(json);
+}
+
+@freezed
+class InitiateKhaltiResponseModel with _$InitiateKhaltiResponseModel {
+  const factory InitiateKhaltiResponseModel({
+    required String pidx,
+  }) = _InitiateKhaltiResponseModel;
+
+  factory InitiateKhaltiResponseModel.fromJson(Map<String, Object?> json) =>
+      _$InitiateKhaltiResponseModelFromJson(json);
 }

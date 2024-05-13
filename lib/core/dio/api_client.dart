@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'app_interceptor.dart';
 import 'connectivity_request_retrier.dart';
@@ -17,7 +18,7 @@ class ApiClient {
 
   static Dio createDio() {
     var dio = Dio(BaseOptions(
-        baseUrl: "http://46.250.243.243:8080/",
+        baseUrl: dotenv.get('API_BASE_URL'),
         contentType: "application/json",
         connectTimeout: const Duration(seconds: 15000),
         receiveTimeout: const Duration(seconds: 15000),

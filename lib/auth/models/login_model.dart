@@ -54,3 +54,16 @@ class RegisterPayload with _$RegisterPayload {
   factory RegisterPayload.fromJson(Map<String, Object?> json) =>
       _$RegisterPayloadFromJson(json);
 }
+
+@freezed
+class RegisterResponse with _$RegisterResponse{
+  const factory RegisterResponse({
+    @JsonKey(name: "phone_number") required String phoneNumber,
+    required String email,
+    @JsonKey(name: "fullname") required String fullName,
+  }) = _RegisterResponse;
+
+  @freezed
+  factory RegisterResponse.fromJson(Map<String, Object?> json) =>
+      _$RegisterResponseFromJson(json);
+}

@@ -10,12 +10,13 @@ class RoomDetailsState extends Equatable {
 class RoomDetailsLoading extends RoomDetailsState {}
 
 class RoomDetailsLoaded extends RoomDetailsState {
+  final String userType;
   final RoomDetailModel roomDetails;
 
-  const RoomDetailsLoaded({required this.roomDetails});
+  const RoomDetailsLoaded({required this.userType, required this.roomDetails});
 
   @override
-  List<Object?> get props => [roomDetails];
+  List<Object?> get props => [userType, roomDetails];
 }
 
 class RoomDetailsFailure extends RoomDetailsState {
